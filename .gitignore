@@ -167,3 +167,4 @@ $RECYCLE.BIN/
 .metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
 
 /.metadata
+.metadata/.lock_info
