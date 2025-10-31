@@ -34,7 +34,7 @@ public class PercentageDiscount extends Discount {
 	
 	
 	@Override
-	public String detailsTail() {
+	protected String detailsTail() {
 		
 		return null;
 	}

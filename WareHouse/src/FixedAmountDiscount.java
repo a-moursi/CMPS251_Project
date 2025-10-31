@@ -34,7 +34,7 @@ public class FixedAmountDiscount extends Discount {
 	
 
 	@Override
-	public String detailsTail() {
+	protected String detailsTail() {
 		 
 		 return "s";
 	 }
