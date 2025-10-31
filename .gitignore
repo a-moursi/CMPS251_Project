@@ -166,3 +166,5 @@ $RECYCLE.BIN/
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
 .metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
 
+/.metadata
+.metadata/.lock_info
