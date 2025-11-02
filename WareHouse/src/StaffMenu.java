@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class StaffMenu {
+	
 	public static void run(Scanner sc, WarehouseSystem system) {
 		
 	}
