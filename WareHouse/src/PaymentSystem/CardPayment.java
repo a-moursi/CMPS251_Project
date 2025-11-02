@@ -1,3 +1,4 @@
+package PaymentSystem;
 
 public class CardPayment implements Payment{
 	private String currency;

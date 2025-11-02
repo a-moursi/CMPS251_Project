@@ -1,3 +1,4 @@
+package PaymentSystem;
 
 public class CashPayment implements Payment{
 	

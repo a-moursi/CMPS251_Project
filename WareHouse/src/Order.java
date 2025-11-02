@@ -1,5 +1,7 @@
 import java.time.LocalDate;
 
+import PaymentSystem.Payment;
+
 public class Order {
 	private String id;
 	private LocalDate date;

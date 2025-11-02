@@ -1,4 +1,3 @@
-
 public class SeedData {
 	public static void load(WarehouseSystem s) {
 		

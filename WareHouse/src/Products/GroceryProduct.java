@@ -1,4 +1,4 @@
-
+package Products;
 public class GroceryProduct extends Product{
 	
 	//---------------------------------------------

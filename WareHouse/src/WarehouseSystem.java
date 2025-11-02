@@ -1,5 +1,8 @@
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import Products.Product;
 
 public class WarehouseSystem {
 	private LocalDate today;

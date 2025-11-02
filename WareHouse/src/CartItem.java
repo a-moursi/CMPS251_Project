@@ -1,3 +1,4 @@
+import Products.Product;
 
 public class CartItem {
 	private int quantity;

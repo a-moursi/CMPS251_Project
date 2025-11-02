@@ -1,3 +1,4 @@
+import Products.Product;
 
 public class OrderItem {
 	private int quantity;
