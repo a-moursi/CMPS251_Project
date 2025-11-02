@@ -1,3 +1,4 @@
+package main;
 import Products.Product;
 
 public class BookProduct extends Product{

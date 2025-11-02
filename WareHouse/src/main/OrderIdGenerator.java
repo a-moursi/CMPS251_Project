@@ -1,3 +1,4 @@
+package main;
 
 public class OrderIdGenerator {
 	private static int counter = 1001;

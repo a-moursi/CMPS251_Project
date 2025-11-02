@@ -1,3 +1,6 @@
+package Shipment;
+import main.Customer;
+
 public class Shipment {
 	
 	String orderId ;

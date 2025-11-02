@@ -1,8 +1,12 @@
+package main;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import Data.RateTable;
+import Discount.Discount;
 import Products.Product;
+import Shipment.Shipment;
 
 public class WarehouseSystem {
 	private LocalDate today;

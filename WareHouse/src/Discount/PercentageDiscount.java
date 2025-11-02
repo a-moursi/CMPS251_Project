@@ -1,3 +1,4 @@
+package Discount;
 import java.time.LocalDate;
 
 public class PercentageDiscount extends Discount {
