@@ -16,11 +16,15 @@ public class WarehouseSystem {
 	private ArrayList<Order> orders = new ArrayList<>();
 	private ArrayList<Shipment> shipments = new ArrayList<>();
 	private RateTable rateTable = new RateTable();
+	
+	//------------------------------------------------------------------------------------------------
 
 	public WarehouseSystem(LocalDate today) {
 		super();
 		this.today = today;
 	}
+	
+	//------------------------------------------------------------------------------------------------
 	
 	public LocalDate today() {
 		return null;
@@ -31,7 +35,10 @@ public class WarehouseSystem {
 	
 	}
 	
-	
+	public ArrayList<Customer> getCustomers() {
+		return customers;
+	}
+
 	public Customer findCustomerById(String id) {
 		return null;
 		
@@ -39,13 +46,10 @@ public class WarehouseSystem {
 
 
 	
-	public void addProduct(Product product) {
+	public void addProduct(Product p) {
 		
 	}
 
-	/**
-	 * @return the products
-	 */
 	public ArrayList<Product> getProducts() {
 		return products;
 	}
@@ -53,6 +57,8 @@ public class WarehouseSystem {
 	public Product findProductById(String id) {
 		return null;
 	}
+	
+	
 	
 	public void addDiscount(Discount discount) {
 		
@@ -69,40 +75,39 @@ public class WarehouseSystem {
 		
 	}
 	
-	public void deactivateOverlaps(Discount newcomer) {
+	
+	
+	private void deactivateOverlaps(Discount newcomer) {
 			
 	}
+	
+	
 	
 	public void addOrder(Order order) {
 		
 	}
 	
-	/**
-	 * @return the orders
-	 */
 	public ArrayList<Order> getOrders() {
 		return orders;
 	}
+	
+	
 	
 	public void addShipment(Shipment shipment) {
 		
 	}
 	
-	
-
-	/**
-	 * @return the shipments
-	 */
 	public ArrayList<Shipment> getShipments() {
 		return shipments;
 	}
 
-	/**
-	 * @return the rateTable
-	 */
+	
+	
 	public RateTable getRateTable() {
 		return rateTable;
 	}
+	
+	
 
 	public Discount findApplicableDiscount(LocalDate date) {
 		return null;
