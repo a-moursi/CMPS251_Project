@@ -32,7 +32,7 @@ public class WarehouseSystem {
 
 
 	public void addCustomer(Customer c) {
-	
+		customers.add(c);
 	}
 	
 	public ArrayList<Customer> getCustomers() {
@@ -47,7 +47,7 @@ public class WarehouseSystem {
 
 	
 	public void addProduct(Product p) {
-		
+		products.add(p);
 	}
 
 	public ArrayList<Product> getProducts() {

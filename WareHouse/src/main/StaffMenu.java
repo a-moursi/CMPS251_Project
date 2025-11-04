@@ -41,7 +41,8 @@ public class StaffMenu {
 	
 	private static void addCustomer(Scanner sc, WarehouseSystem sys) {
 		System.out.println("Adding new customer....");
-		//get customer info and make a new customer and pass it 
+		//get customer info and make a new customer and pass it (id and name) 
+		//check if the id is valid and that it doesn't already exist 
 		sys.addCustomer(null);
 		
 	}
@@ -57,7 +58,8 @@ public class StaffMenu {
 	
 	private static void addProduct(Scanner sc, WarehouseSystem sys) {
 		System.out.println("Adding new product....");
-		//get product info and make a new customer and pass it 
+		//get product info and make a new product and pass it (id, name, currency, price, weightKg, stockQty)
+		//check if the id is valid and that it doesn't already exist 
 		sys.addProduct(null);
 	}
 	

@@ -9,6 +9,7 @@ public class CustomerMenu {
 	
 	private static String name; //extra added field
 	private static String id; //extra added field
+	
 	private static final String CUSTOMERMENU = "\n--- Customer Menu (ID: " +id+ "," +name+") --\r\n"//shows the ID and Name of the customer chosen the previous menu
 			+ "1) List Products (by Category)\r\n"
 			+ "2) Add to Cart \r\n"
