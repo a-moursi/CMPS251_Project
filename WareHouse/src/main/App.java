@@ -1,6 +1,10 @@
 package main;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Formatter;
 import java.util.Scanner;
 
 //Abdelrahman Moursi
@@ -16,7 +20,7 @@ public class App {
 	//variables used in the menu
 	private static String currency = "QAR";//for now 
 	
-	//MENU CONSTANTS-------------------------------------------------------------------------
+	//MENU CONSTANTS==============================================================================================
 	
 	private static final String WHMENU = "=== Single-Warehouse System (" + currency + ") === \r\n" //shows the currency in the menu
 										+ "1) Staff Menu \r\n"
@@ -26,9 +30,13 @@ public class App {
 	
 	
 	
-	//---------------------------------------------------------------------------------------------
+	//============================================================================================================
 	
 	public static void main(String[] args) {
+		System.out.println("Welcome to the WareHouse System!");
+		//load the data from the files 
+		
+		
 		int choice;
 		int x; //random variable to not get an error, remove later
 		do {
@@ -45,16 +53,30 @@ public class App {
 		}while(true);
 	}
 	
-	//End of MENUS----------------------------------------------------------------------------------------------------
+	//End of MENUS============================================================================================================
 	
-	public static void exitSystem() {//try to pass exit code, default id 0 (probably we dont need it)
+	public static void exitSystem() {
 		//close scanners, save data, and exit
 		System.out.println("Exiting the system ....");
 		
-		sc.close();
+		//Save the data-------------------------------------------------------------------------------------------------
+		System.out.println("Saving Data ...");
+		FileWriter fr = null;
+		Formatter out = null;
+		try {
+			fr = new FileWriter("System_Data",true);
+			out = new Formatter(fr);
+			
+			//write data to the file
+		}catch(IOException e){
+			System.out.println("Error" + e);
+		}finally {
+			out.close(); //close the file writer
+		}
+		//-----------------------------------------------------------------------------------------------------------------
 		
-		System.out.println("bye.");
+		sc.close(); //close the scanner
 		
-		System.exit(0);
+		System.exit(0); //exit
 	}
 }

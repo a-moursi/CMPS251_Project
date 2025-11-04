@@ -61,7 +61,10 @@ public class WarehouseSystem {
 	
 	
 	public void addDiscount(Discount discount) {
-		
+		//maybe i need to check before
+		discounts.add(discount);
+		//check if the new discount overlaps with any other discount
+		this.deactivateOverlaps(discount); // deactivates discounts overlapping with the passed(new) discount
 	}
 	
 	/**
@@ -77,14 +80,15 @@ public class WarehouseSystem {
 	
 	
 	
-	private void deactivateOverlaps(Discount newcomer) {
+	private void deactivateOverlaps(Discount newcomer) { //deactivates active discounts that overlap with the passes discount
 			
 	}
 	
 	
 	
 	public void addOrder(Order order) {
-		
+		//maybe i need to check before
+		orders.add(order);
 	}
 	
 	public ArrayList<Order> getOrders() {
@@ -94,7 +98,8 @@ public class WarehouseSystem {
 	
 	
 	public void addShipment(Shipment shipment) {
-		
+		//maybe i need to check before
+		shipments.add(shipment);
 	}
 	
 	public ArrayList<Shipment> getShipments() {
