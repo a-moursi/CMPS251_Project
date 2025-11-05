@@ -1,6 +1,9 @@
 package main;
 import Products.Product;
 
+//Anas Ali Khan
+//11/05/2025
+
 public class CartItem {
 	private int quantity;
 	private Product product;
@@ -8,10 +11,11 @@ public class CartItem {
 	 * @param quantity
 	 * @param product
 	 */
-	public CartItem(int quantity, Product product) {
+	public CartItem(Product p, int q) {
 		super();
-		this.quantity = quantity;
-		this.product = product;
+		this.product = p;
+		this.quantity = q;
+		
 	}
 	/**
 	 * @return the quantity
@@ -33,16 +37,17 @@ public class CartItem {
 	}
 
 	public double lineSubtotal() {
-		return 0.0;
+		return product.getPrice()*this.quantity; // computes the line total 
 		
 	}
 	
 	public double lineWeight() {
-		return 0.0;
+		return product.getWeightKg() * this.quantity; // computes the line weight
 	}
 	
 	public String info() {
 		return null;
 	}
+	
 	
 }
