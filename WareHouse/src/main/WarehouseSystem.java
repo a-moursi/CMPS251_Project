@@ -32,6 +32,7 @@ public class WarehouseSystem {
 
 
 	public void addCustomer(Customer c) {
+		//validation first
 		customers.add(c);
 	}
 	
@@ -40,13 +41,18 @@ public class WarehouseSystem {
 	}
 
 	public Customer findCustomerById(String id) {
+		for(Customer c : customers) {
+			if(c.getId().equals(id)) {
+				return c;
+			}
+		}
 		return null;
-		
 	}
 
 
 	
 	public void addProduct(Product p) {
+		//validation first
 		products.add(p);
 	}
 

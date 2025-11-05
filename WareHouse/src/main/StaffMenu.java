@@ -6,17 +6,19 @@ import java.util.Scanner;
 //1-11-2025
 
 public class StaffMenu {
-	private static final String STAFFMENU = "\n--- Staff Menu --\r\n"
-			+ "1) Add Customer (ID + Name) \r\n"
-			+ "2) List/Toggle Discounts \r\n"
-			+ "3) Create Discount\r\n"
-			+ "4) Add Product \r\n"
-			+ "5) Update Shipment Status \r\n"
-			+ "6) Reports (~15)\r\n"
-			+ "0) Back \r\n\n"
-			+ "Choice > ";
 	
 	public static void run(Scanner sc, WarehouseSystem sys) {
+		
+		final String STAFFMENU = "\n--- Staff Menu --\r\n"
+				+ "1) Add Customer (ID + Name) \r\n"
+				+ "2) List/Toggle Discounts \r\n"
+				+ "3) Create Discount\r\n"
+				+ "4) Add Product \r\n"
+				+ "5) Update Shipment Status \r\n"
+				+ "6) Reports (~15)\r\n"
+				+ "0) Back \r\n\n"
+				+ "Choice > ";
+		//----------
 		
 		int choice;
 		boolean exit=false;
@@ -31,7 +33,7 @@ public class StaffMenu {
 				case 3 -> createDiscount(sc, sys);
 				case 4 -> addProduct(sc, sys);
 				case 5 -> updateShipment(sc, sys);
-				case 6 -> x=1;
+				case 6 -> x=1;//Reports
 				case 0 -> exit=true;
 				default -> System.out.println("Invalid choice!, try again");
 			} 
@@ -48,8 +50,10 @@ public class StaffMenu {
 	}
 	
 	private static void listToggleDiscounts(Scanner sc, WarehouseSystem sys) {
+		//print discount list
 		System.out.println("Printing discount list...");
 		System.out.println(sys.getDiscounts());
+		//toggle the chosen discount
 	}
 	
 	private static void createDiscount(Scanner sc, WarehouseSystem sys) {

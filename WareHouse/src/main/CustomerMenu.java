@@ -7,19 +7,19 @@ import java.util.Scanner;
 
 public class CustomerMenu {
 	
-	private static String name; //extra added field
-	private static String id; //extra added field
-	
-	private static final String CUSTOMERMENU = "\n--- Customer Menu (ID: " +id+ "," +name+") --\r\n"//shows the ID and Name of the customer chosen the previous menu
-			+ "1) List Products (by Category)\r\n"
-			+ "2) Add to Cart \r\n"
-			+ "3) Remove from Cart \r\n"
-			+ "4) View Cart \r\n"
-			+ "5) Checkout \r\n"
-			+ "0) Logout \r\n\n"
-			+ "Choice > ";
-	
 	public static void run(Scanner sc, WarehouseSystem sys) {
+		
+		String id=null;
+		String name=null;
+		final String CUSTOMERMENU = "\n--- Customer Menu (ID: " +id+ "," +name+") --\r\n"//shows the ID and Name of the customer chosen the previous menu
+				+ "1) List Products (by Category)\r\n"
+				+ "2) Add to Cart \r\n"
+				+ "3) Remove from Cart \r\n"
+				+ "4) View Cart \r\n"
+				+ "5) Checkout \r\n"
+				+ "0) Logout \r\n\n"
+				+ "Choice > ";
+		
 		//shows a menu for available customers 
 		System.out.println("Available Customer IDs: ");
 		int i=1;
