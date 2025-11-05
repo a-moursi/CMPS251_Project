@@ -1,20 +1,26 @@
 package main;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import Discount.Discount;
 import PaymentSystem.Payment;
 
+
+// Anas Ali Khan
+// 11/05/2025
 public class Order {
 	private String id;
-	private LocalDate date;
+	private LocalDate date = LocalDate.now();
 	private double subtotal;
 	private double discountAmount;
 	private double shippingFee;
 	private double total;
 	private Customer customer;
-	private OrderItem items;
+	private ArrayList<OrderItem> items;
 	private Discount appliedDiscount;
 	private Payment payment;
+	
+	 // Initializes the date to current date
 	/**
 	 * @param id
 	 * @param customer
@@ -27,7 +33,7 @@ public class Order {
 	 * @param appliedDiscount
 	 * @param payment
 	 */
-	public Order(String id, Customer customer, LocalDate date, OrderItem items, double subtotal, double discountAmount,
+	public Order(String id, Customer customer, LocalDate date,  ArrayList<OrderItem> items, double subtotal, double discountAmount,
 			double shippingFee, double total, Discount appliedDiscount, Payment payment) {
 		
 		this.id = id;
@@ -64,7 +70,7 @@ public class Order {
 	/**
 	 * @return the items
 	 */
-	public OrderItem getItems() {
+	public ArrayList<OrderItem> getItems() {
 		return items;
 	}
 	

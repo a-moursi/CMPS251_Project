@@ -1,20 +1,23 @@
 package main;
 import Products.Product;
 
+//Anas Ali Khan
+//11/05/2025
+
 public class OrderItem {
 	private int quantity;
 	private Product product;
 	private double unitPriceQar;
 	/**
-	 * @param quantity
-	 * @param product
-	 * @param unitPriceQar
+	 * @param q
+	 * @param p
+	 * @param u
 	 */
 	public OrderItem(Product p, int q, double u) {
 		super();
-		this.quantity = quantity;
-		this.product = product;
-		this.unitPriceQar = unitPriceQar;
+		this.quantity = q;
+		this.product = p;
+		this.unitPriceQar = u;
 	}
 	/**
 	 * @return the quantity
@@ -36,7 +39,7 @@ public class OrderItem {
 	}
 	
 	public double lineTotal() {
-		return 0.0;
+		return this.quantity*this.unitPriceQar; // Calculates the line total
 	}
 
 	
