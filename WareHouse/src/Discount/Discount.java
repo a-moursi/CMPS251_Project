@@ -4,12 +4,12 @@ import java.time.LocalDate;
 
 public abstract class Discount {
 	
-
 	private String code;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private boolean active;
 	
+	//------------------------------------------------------------------------------------------
 
 	protected Discount(String code, LocalDate start, LocalDate end, boolean active) {
 		super();
@@ -18,6 +18,8 @@ public abstract class Discount {
 		endDate = end;
 		this.active = active;
 	}
+	
+	//------------------------------------------------------------------------------------------
 	
 	public String getCode() {
 		return code;
@@ -38,6 +40,7 @@ public abstract class Discount {
 		active = a;
 	}
 	
+	//------------------------------------------------
 
 	 public abstract double calculateDiscount(double subtotal);
 	

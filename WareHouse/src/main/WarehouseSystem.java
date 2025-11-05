@@ -16,11 +16,15 @@ public class WarehouseSystem {
 	private ArrayList<Order> orders = new ArrayList<>();
 	private ArrayList<Shipment> shipments = new ArrayList<>();
 	private RateTable rateTable = new RateTable();
+	
+	//------------------------------------------------------------------------------------------------
 
 	public WarehouseSystem(LocalDate today) {
 		super();
 		this.today = today;
 	}
+	
+	//------------------------------------------------------------------------------------------------
 	
 	public LocalDate today() {
 		return null;
@@ -28,10 +32,13 @@ public class WarehouseSystem {
 
 
 	public void addCustomer(Customer c) {
-	
+		customers.add(c);
 	}
 	
-	
+	public ArrayList<Customer> getCustomers() {
+		return customers;
+	}
+
 	public Customer findCustomerById(String id) {
 		return null;
 		
@@ -39,13 +46,10 @@ public class WarehouseSystem {
 
 
 	
-	public void addProduct(Product product) {
-		
+	public void addProduct(Product p) {
+		products.add(p);
 	}
 
-	/**
-	 * @return the products
-	 */
 	public ArrayList<Product> getProducts() {
 		return products;
 	}
@@ -54,8 +58,13 @@ public class WarehouseSystem {
 		return null;
 	}
 	
+	
+	
 	public void addDiscount(Discount discount) {
-		
+		//maybe i need to check before
+		discounts.add(discount);
+		//check if the new discount overlaps with any other discount
+		this.deactivateOverlaps(discount); // deactivates discounts overlapping with the passed(new) discount
 	}
 	
 	/**
@@ -69,40 +78,41 @@ public class WarehouseSystem {
 		
 	}
 	
-	public void deactivateOverlaps(Discount newcomer) {
+	
+	
+	private void deactivateOverlaps(Discount newcomer) { //deactivates active discounts that overlap with the passes discount
 			
 	}
 	
+	
+	
 	public void addOrder(Order order) {
-		
+		//maybe i need to check before
+		orders.add(order);
 	}
 	
-	/**
-	 * @return the orders
-	 */
 	public ArrayList<Order> getOrders() {
 		return orders;
 	}
 	
+	
+	
 	public void addShipment(Shipment shipment) {
-		
+		//maybe i need to check before
+		shipments.add(shipment);
 	}
 	
-	
-
-	/**
-	 * @return the shipments
-	 */
 	public ArrayList<Shipment> getShipments() {
 		return shipments;
 	}
 
-	/**
-	 * @return the rateTable
-	 */
+	
+	
 	public RateTable getRateTable() {
 		return rateTable;
 	}
+	
+	
 
 	public Discount findApplicableDiscount(LocalDate date) {
 		return null;
