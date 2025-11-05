@@ -30,9 +30,9 @@ public class PercentageDiscount extends Discount {
 
 
 	@Override
-	protected String detailsTail() {
+	public String detailsTail() {//we changed it to public 
 		
-		 return String.format("Percent(%s) %.2f% [%s to %s] | Active: %b",getCode()
+		 return String.format("Percent(%s) %.2f%% [%s to %s] | Active: %b",getCode()
 				 ,percent,getStartDate(),getEndDate(),isActive());
 	}
 

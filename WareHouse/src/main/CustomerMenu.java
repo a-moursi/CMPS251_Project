@@ -27,9 +27,11 @@ public class CustomerMenu {
 			System.out.printf("%d- %d (%s)\n",i,c.getId(),c.getName());
 			i++;
 		}
+		
 		//choose the customer
 		System.out.println("Enter Customer ID to login: > ");
 		id = sc.next();
+		
 		//should validate if the input is valid/in the list before continuing
 		Customer current = sys.findCustomerById(id); 
 		name = current.getName();

@@ -1,6 +1,9 @@
 package main;
 
+import java.time.LocalDate;
 import java.util.Scanner;
+
+import Discount.*;
 
 //Abdelrahman Moursi
 //1-11-2025
@@ -42,21 +45,51 @@ public class StaffMenu {
 	}
 	
 	private static void addCustomer(Scanner sc, WarehouseSystem sys) {
-		System.out.println("Adding new customer....");
 		//get customer info and make a new customer and pass it (id and name) 
-		//check if the id is valid and that it doesn't already exist 
-		sys.addCustomer(null);
+		System.out.print("Customer ID: > ");
+		String id = sc.next();
+		//check if the id is valid and that it doesn't already exist
+		System.out.print("Customer Name: > ");
+		String name = sc.next();
+		
+		sys.addCustomer(new Customer(id,name));
+		System.out.printf("Added customer %s (ID: %s)\n",name,id);
+		
 		
 	}
 	
 	private static void listToggleDiscounts(Scanner sc, WarehouseSystem sys) {
 		//print discount list
-		System.out.println("Printing discount list...");
-		System.out.println(sys.getDiscounts());
+		int i=1;
+		for(Discount d : sys.getDiscounts()) {
+			System.out.printf("%d) %s\n",i,d.detailsTail());
+			i++;
+		}
 		//toggle the chosen discount
 	}
 	
 	private static void createDiscount(Scanner sc, WarehouseSystem sys) {
+		
+		System.out.print("Type: 1) Fixed Amount 2) Percentage\n> ");
+		int choice=sc.nextInt();
+		System.out.print("Code/Name: > ");
+		String code = sc.next();
+		System.out.print("Start date (YYYY-MM-DD): > ");
+		LocalDate start = LocalDate.parse(sc.next());
+		System.out.print("End date (YYYY-MM-DD): > ");
+		LocalDate end = LocalDate.parse(sc.next());
+		System.out.print("Create as Active? (y/n): > ");
+		boolean active = (sc.next().toLowerCase().equals("y")) ? true : false;
+		
+		switch(choice){
+		case 1 -> {System.out.print("Amount (e.g., 10 for 10 QAR): > ");
+			double amount = sc.nextDouble();
+			sys.addDiscount(new FixedAmountDiscount(code, start, end, active, amount));}
+		case 2 -> {System.out.print("Percent (e.g., 10 for 10%): > ");
+			double percent = sc.nextDouble();
+			sys.addDiscount(new PercentageDiscount(code, start, end, active, percent));}
+		}
+		
 		
 	}
 	

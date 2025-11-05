@@ -49,7 +49,7 @@ public abstract class Discount {
 	 
 	 
 	// For ( List/Toggle Discounts )  &  (Reports: [1] All Discounts)
-	 protected abstract String detailsTail();
+	 public  abstract String detailsTail();//we changed it to public 
 	 
 	 
 	 // For (Reports: [2] Active Discounts)
