@@ -19,32 +19,30 @@ public class FixedAmountDiscount extends Discount {
 		 
 		 return amountQar;
 	 }
-	
-	@Override
-	public String getDetailsShort() {
-		 
-		 return "s";
-	 }
-
 	 
 	@Override
 	 public String getDetails() {
 		 
-		 return "s";
+		return String.format("Discount (Fixed(%s) QAR %.2f [%s to %s]):",getCode()
+				 ,amountQar,getStartDate(),getEndDate());
 	 }
-	
 
+
+	
 	@Override
 	protected String detailsTail() {
-		 
-		 return "s";
-	 }
-	
-	
-	private String activeString() {
 		
-		
-		return "s";
+		return String.format("Fixed(%s) QAR %.2f [%s to %s] | Active: %b",getCode()
+				 ,amountQar,getStartDate(),getEndDate(),isActive());
 	}
 
+
+
+	@Override
+	public String ActiveDiscounts() {
+		
+		return String.format("Fixed(%s) QAR %.2f [%s to %s]",getCode()
+				 ,amountQar,getStartDate(),getEndDate());
+	}
+	
 }

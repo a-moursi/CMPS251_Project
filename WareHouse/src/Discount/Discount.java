@@ -39,29 +39,18 @@ public abstract class Discount {
 	}
 	
 
-	 public double calculateDiscount(double subtotal) {
-		 
-		 return 1;
-	 }
+	 public abstract double calculateDiscount(double subtotal);
 	
+	 // For ( Checkout )
+	 public abstract String getDetails();
 	 
 	 
-	 public String getDetailsShort() {
-		 
-		 return "s";
-	 }
- 
-	 
-	 public String getDetails() {
-		 
-		 return "s";
-	 }
+	// For ( List/Toggle Discounts )  &  (Reports: [1] All Discounts)
+	 protected abstract String detailsTail();
 	 
 	 
-	 protected String detailsTail() {
-		 
-		 return "s";
-	 }
+	 // For (Reports: [2] Active Discounts)
+	 public abstract String ActiveDiscounts();
 	 
 	 
 	 public static boolean overlaps(Discount a, Discount b) {

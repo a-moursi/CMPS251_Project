@@ -3,9 +3,9 @@ package main;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import Data.RateTable;
 import Discount.Discount;
 import Products.Product;
+import Shipment.RateTable;
 import Shipment.Shipment;
 
 public class WarehouseSystem {

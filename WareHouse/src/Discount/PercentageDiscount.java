@@ -20,25 +20,31 @@ public class PercentageDiscount extends Discount {
 		 return (subtotal*percent)/100;
 	 }
 	
-	@Override
-	public String getDetailsShort() {
-		 
-		 return "s";
-	 }
 
-	 
 	@Override
 	 public String getDetails() {
 		 
-		 return "s";
+		 return String.format("Discount (Percent(%s) %.2f% [%s to %s]):",getCode()
+				 ,percent,getStartDate(),getEndDate());
 	 }
-	
-	
+
+
 	@Override
 	protected String detailsTail() {
 		
-		return null;
+		 return String.format("Percent(%s) %.2f% [%s to %s] | Active: %b",getCode()
+				 ,percent,getStartDate(),getEndDate(),isActive());
 	}
+
+
+
+	@Override
+	public String ActiveDiscounts() {
+		
+		return String.format("Percent(%s) %.2f% [%s to %s]",getCode()
+				 ,percent,getStartDate(),getEndDate());
+	}
+	
 	
 
 }
