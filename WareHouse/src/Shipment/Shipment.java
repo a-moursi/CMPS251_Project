@@ -4,11 +4,11 @@ import main.Customer;
 
 public class Shipment {
 
-	String orderId;
-	Customer customer;
-	Address address;
-	ShipmentStatus status;
-	double totalWeightKg;
+	private String orderId;
+	private Customer customer;
+	private Address address;
+	private ShipmentStatus status;
+	private double totalWeightKg;
 
 	public ShipmentStatus getStatus() {
 		return status;
