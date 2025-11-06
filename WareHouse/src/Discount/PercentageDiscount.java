@@ -23,7 +23,7 @@ public class PercentageDiscount extends Discount {
 	@Override
 	 public String getDetails() {
 		 
-		 return String.format("Discount (Percent(%s) %.2f% [%s to %s]):",getCode()
+		 return String.format("Discount (Percent(%s) %.2f%% [%s to %s]):",getCode()
 				 ,percent,getStartDate(),getEndDate());
 	 }
 
