@@ -6,6 +6,11 @@ import java.time.LocalDate;
 import java.util.Formatter;
 import java.util.Scanner;
 
+import Discount.Discount;
+import Orders.Order;
+import Products.Product;
+import Shipment.Shipment;
+
 //Abdelrahman Moursi
 //1-11-2025
 
@@ -13,7 +18,7 @@ public class App {
 	public static final LocalDate TODAY = LocalDate.of(2025, 10, 24);
 	
 	private static Scanner sc = new Scanner(System.in);
-	private static WarehouseSystem system = new WarehouseSystem(TODAY);
+	private static WarehouseSystem sys = new WarehouseSystem(TODAY);
 	
 	
 	//variables used in the menu
@@ -43,8 +48,8 @@ public class App {
 			choice = sc.nextInt();//do try catch for invalid input
 			
 			switch (choice) {
-				case 1 -> StaffMenu.run(sc, system);
-				case 2 -> CustomerMenu.run(sc, system);
+				case 1 -> StaffMenu.run(sc, sys);
+				case 2 -> CustomerMenu.run(sc, sys);
 				case 0 -> exitSystem();
 				default -> System.out.println("Invalid choice!, try again");
 			} 
@@ -56,26 +61,72 @@ public class App {
 	
 	public static void exitSystem() {
 		//close scanners, save data, and exit
-		System.out.println("Exiting the system ....");
+		System.out.println("=== Exiting the system ===");
 		
 		//Save the data-------------------------------------------------------------------------------------------------
-		System.out.println("Saving Data ...");
+		System.out.print("Saving Data ");
 		FileWriter fr = null;
 		Formatter out = null;
 		try {
-			fr = new FileWriter("System_Data",true);
+			fr = new FileWriter("Customer_Data", true);
 			out = new Formatter(fr);
+			// write Customer data to the file
+			for (Customer c : sys.getCustomers()) {
+				out.format("%s,%s\n", c.getId(), c.getName());
+			}
+				System.out.print(".");
+				out.close();
+
+				// ----
+				fr = new FileWriter("Product_Data", true);
+				out = new Formatter(fr);
+				// write Product data to the file
+				for (Product p : sys.getProducts()) {
+					out.format("%s", p);
+				}
+				System.out.print(".");
+				out.close();
+
+				// ----
+				fr = new FileWriter("Discount_Data", true);
+				out = new Formatter(fr);
+				// write Discount data to the file
+				for (Discount d : sys.getDiscounts()) {
+					System.out.println("wrote a discount");
+					out.format("%s", d);
+				}
+				System.out.print(".");
+				out.close();
+
+				// ----
+				fr = new FileWriter("Order_Data", true);
+				out = new Formatter(fr);
+				// write Order data to the file
+				for (Order o : sys.getOrders()) {
+					out.format("%s", o);
+				}
+				System.out.print(".");
+				out.close();
+
+				// ----
+				fr = new FileWriter("Shipment_Data", true);
+				out = new Formatter(fr);
+				// write Shipment data to the file
+				for (Shipment s : sys.getShipments()) {
+					out.format("%s", s);
+				}
+				System.out.println(".");
+				out.close();
 			
-			//write data to the file
-		}catch(IOException e){
+		} catch (IOException e) {
 			System.out.println("Error" + e);
-		}finally {
-			out.close(); //close the file writer
+		} finally {
+			System.out.println("Data Saved.");
+			out.close(); // close the file writer
 		}
 		//-----------------------------------------------------------------------------------------------------------------
 		
 		sc.close(); //close the scanner
-		
 		System.exit(0); //exit
 	}
 }

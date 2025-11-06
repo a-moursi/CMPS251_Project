@@ -1,9 +1,10 @@
-package main;
+package Orders;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Discount.Discount;
 import PaymentSystem.Payment;
+import main.Customer;
 
 
 // Anas Ali Khan
