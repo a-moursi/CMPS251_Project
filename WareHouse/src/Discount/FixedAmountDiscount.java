@@ -13,7 +13,6 @@ public class FixedAmountDiscount extends Discount {
 	}
 
 	
-	
 	@Override
 	public double calculateDiscount(double subtotal) {
 		 
@@ -30,7 +29,7 @@ public class FixedAmountDiscount extends Discount {
 
 	
 	@Override
-	public String detailsTail() {//we changed it to public 
+	public String detailsTail() {
 		
 		return String.format("Fixed(%s) QAR %.2f [%s to %s] | Active: %b",getCode()
 				 ,amountQar,getStartDate(),getEndDate(),isActive());

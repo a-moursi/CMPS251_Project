@@ -13,11 +13,10 @@ public class PercentageDiscount extends Discount {
 	}
 
 
-	
 	@Override
 	public double calculateDiscount(double subtotal) {
 		 
-		 return (subtotal*percent)/100;
+		 return (subtotal*percent)/100.0;
 	 }
 	
 
@@ -30,7 +29,7 @@ public class PercentageDiscount extends Discount {
 
 
 	@Override
-	public String detailsTail() {//we changed it to public 
+	public String detailsTail() {
 		
 		 return String.format("Percent(%s) %.2f%% [%s to %s] | Active: %b",getCode()
 				 ,percent,getStartDate(),getEndDate(),isActive());
@@ -41,7 +40,7 @@ public class PercentageDiscount extends Discount {
 	@Override
 	public String ActiveDiscounts() {
 		
-		return String.format("Percent(%s) %.2f% [%s to %s]",getCode()
+		return String.format("Percent(%s) %.2f%% [%s to %s]",getCode()
 				 ,percent,getStartDate(),getEndDate());
 	}
 	
