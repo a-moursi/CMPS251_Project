@@ -1,5 +1,9 @@
 package Products;
 
+//Name: Abdelrahman Moursi
+//ID: 202406103
+//Date: 01-11-2025
+
 public abstract class Product {
 	
 	private String id;
@@ -17,15 +21,14 @@ public abstract class Product {
 		this.id = id;
 		this.name = name;
 		this.currency = currency;
-		this.setPrice(price);
-		this.setWeightKg(weightKg);
-		this.setStock(stockQty);
+		setPrice(price);
+		setWeightKg(weightKg);
+		setStock(stockQty);
 	}
 	
 	//----------------------------
 	
 	public abstract String getCategory();
-	//same method exists in all categories
 	
 	//---------------------------------
 	
@@ -72,7 +75,6 @@ public abstract class Product {
 	
 	public String basicInfo() {
 		String info = String.format("test%s", name);
-				
 		return info;
 	}
 	

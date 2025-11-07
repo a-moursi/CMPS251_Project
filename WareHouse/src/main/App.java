@@ -11,38 +11,35 @@ import Orders.Order;
 import Products.Product;
 import Shipment.Shipment;
 
-//Abdelrahman Moursi
-//1-11-2025
+//Name: Abdelrahman Moursi
+//ID: 202406103
+//Date: 01-11-2025
 
 public class App {
 	public static final LocalDate TODAY = LocalDate.of(2025, 10, 24);
+	public final static String currency = "QAR";//extra added variable
 	
 	private static Scanner sc = new Scanner(System.in);
 	private static WarehouseSystem sys = new WarehouseSystem(TODAY);
 	
-	
-	//variables used in the menu
-	private static String currency = "QAR";//for now 
-	
 	//MENU CONSTANTS==============================================================================================
 	
-	private static final String WHMENU = "=== Single-Warehouse System (" + currency + ") === \r\n" //shows the currency in the menu
+	private static final String WHMENU = "=== Single-Warehouse System (" + currency + ") === \r\n"
 										+ "1) Staff Menu \r\n"
 										+ "2) Customer Menu \r\n"
 										+ "0) Exit\r\n\n"
 										+ "Choice > ";
 	
-	
-	
 	//============================================================================================================
 	
 	public static void main(String[] args) {
 		System.out.println("Welcome to the WareHouse System!");
+		//-----------------------------------
 		//load the data from the files 
 		
+	//Show System MENU----------------------
 		
 		int choice;
-		int x; //random variable to not get an error, remove later
 		do {
 			System.out.print(WHMENU);
 			choice = sc.nextInt();//do try catch for invalid input
@@ -57,8 +54,6 @@ public class App {
 		}while(true);
 	}
 	
-	//End of MENUS============================================================================================================
-	
 	public static void exitSystem() {
 		//close scanners, save data, and exit
 		System.out.println("=== Exiting the system ===");
@@ -70,14 +65,15 @@ public class App {
 		try {
 			fr = new FileWriter("Customer_Data", true);
 			out = new Formatter(fr);
-			// write Customer data to the file
+			
+				//Customer data -----
 			for (Customer c : sys.getCustomers()) {
 				out.format("%s,%s\n", c.getId(), c.getName());
 			}
 				System.out.print(".");
 				out.close();
 
-				// ----
+				// Products data----
 				fr = new FileWriter("Product_Data", true);
 				out = new Formatter(fr);
 				// write Product data to the file
@@ -87,18 +83,17 @@ public class App {
 				System.out.print(".");
 				out.close();
 
-				// ----
+				// Discounts data----
 				fr = new FileWriter("Discount_Data", true);
 				out = new Formatter(fr);
 				// write Discount data to the file
 				for (Discount d : sys.getDiscounts()) {
-					System.out.println("wrote a discount");
 					out.format("%s", d);
 				}
 				System.out.print(".");
 				out.close();
 
-				// ----
+				// Order data----
 				fr = new FileWriter("Order_Data", true);
 				out = new Formatter(fr);
 				// write Order data to the file
@@ -108,7 +103,7 @@ public class App {
 				System.out.print(".");
 				out.close();
 
-				// ----
+				// shipment data----
 				fr = new FileWriter("Shipment_Data", true);
 				out = new Formatter(fr);
 				// write Shipment data to the file

@@ -9,6 +9,10 @@ import Products.Product;
 import Shipment.RateTable;
 import Shipment.Shipment;
 
+//Name: Abdelrahman Moursi
+//ID: 202406103
+//Date: 01-11-2025
+
 public class WarehouseSystem {
 	private LocalDate today;
 	private ArrayList<Customer> customers = new ArrayList<>();
@@ -16,7 +20,10 @@ public class WarehouseSystem {
 	private ArrayList<Discount> discounts = new ArrayList<>();
 	private ArrayList<Order> orders = new ArrayList<>();
 	private ArrayList<Shipment> shipments = new ArrayList<>();
-	private RateTable rateTable = new RateTable();
+	
+	double[] maxWeights = {2, 5, 10};//extra added vars
+	double[] fees = {10, 20, 35, 50};//extra added vars
+	private RateTable rateTable = new RateTable(maxWeights, fees);
 	
 	//------------------------------------------------------------------------------------------------
 

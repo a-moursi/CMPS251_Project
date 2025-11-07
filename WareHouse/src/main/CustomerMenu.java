@@ -2,8 +2,9 @@ package main;
 
 import java.util.Scanner;
 
-//Abdelrahman Moursi
-//1-11-2025
+//Name: Abdelrahman Moursi
+//ID: 202406103
+//01-11-2025
 
 public class CustomerMenu {
 	
