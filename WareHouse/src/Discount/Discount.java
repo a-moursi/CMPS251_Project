@@ -59,10 +59,9 @@ public abstract class Discount {
 
 	public static boolean overlaps(Discount a, Discount b) {
 
-		if (a.endDate.isAfter(b.startDate) && a.endDate.isBefore(a.endDate)
-				|| a.startDate.isAfter(b.startDate) && a.startDate.isBefore(a.endDate)) return true;
+		if (a == null || b == null) return false;
 
-		return false;
+		return a.startDate.isBefore(b.endDate) && a.endDate.isAfter(b.startDate);
 	}
 
 }
