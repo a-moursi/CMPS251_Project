@@ -27,8 +27,6 @@ public class StaffMenu {
 		//----------
 		
 		int choice;
-		boolean exit=false;
-		int x; //random variable to not get an error, remove later
 		do {
 			System.out.print(STAFFMENU);
 			choice = sc.nextInt();//do try catch for invalid input
@@ -39,12 +37,11 @@ public class StaffMenu {
 				case 3 -> createDiscount(sc, sys);
 				case 4 -> addProduct(sc, sys);
 				case 5 -> updateShipment(sc, sys);
-				case 6 -> x=1;//Reports
-				case 0 -> exit=true;
-				default -> System.out.println("Invalid choice!, try again");
+				case 6 -> System.out.println("Option 6 not implemented yet");//Reports
+				case 0 -> choice=0;
+				default -> System.out.println("Invalid choice!, try again(Staff Menu)");
 			} 
-			
-		}while(!exit);
+		}while(!(choice==0));
 	}
 	
 	private static void addCustomer(Scanner sc, WarehouseSystem sys) {
@@ -73,6 +70,7 @@ public class StaffMenu {
 	
 	private static void createDiscount(Scanner sc, WarehouseSystem sys) {
 		
+		//prints the menu and saves the needed data in variables 
 		System.out.print("Type: 1) Fixed Amount 2) Percentage\n> ");
 		int choice=sc.nextInt();
 		System.out.print("Code/Name: > ");
@@ -84,6 +82,7 @@ public class StaffMenu {
 		System.out.print("Create as Active? (y/n): > ");
 		boolean active = (sc.next().toLowerCase().equals("y")) ? true : false;
 		
+		//prints a different success message for each discount type 
 		switch(choice){
 		case 1 -> {System.out.print("Amount (e.g., 10 for 10 QAR): > ");
 			double amount = sc.nextDouble();
@@ -91,12 +90,15 @@ public class StaffMenu {
 		case 2 -> {System.out.print("Percent (e.g., 10 for 10%): > ");
 			double percent = sc.nextDouble();
 			sys.addDiscount(new PercentageDiscount(code, start, end, active, percent));}
+		default -> System.out.println("Invalid Discount type");
 		}
 		
 		
 	}
 	
 	private static void addProduct(Scanner sc, WarehouseSystem sys) {
+		
+		//prints the menu and saves the needed data in variables 
 		System.out.println("Category: 1) Book 2) Electronic 3) Grocery\n> ");
 		int choice=sc.nextInt();
 		System.out.print("ID: > ");
@@ -110,24 +112,29 @@ public class StaffMenu {
 		System.out.print("Stock Qty: > ");
 		int stock = sc.nextInt();
 		
-		int x=0;
-		switch(choice) {//idk what is Book
-		case 1 -> x=1;//{sys.addProduct(new ElectronicProduct(id, name, App.currency, price, weight, stock));
-		//System.out.printf("Product added: %s (Electronic)\n", name);}
+		
+		//depending on the choice, creates the appropriate object and adds it to the ArrayList
+		switch(choice) {
+		case 1 -> {sys.addProduct(new BookProduct(id, name, App.currency, price, weight, stock));
+		System.out.printf("Product added: %s (Book)\n", name);}
 		case 2 -> {sys.addProduct(new ElectronicProduct(id, name, App.currency, price, weight, stock));
 		System.out.printf("Product added: %s (Electronic)\n", name);}
 		case 3 -> {sys.addProduct(new GroceryProduct(id, name, App.currency, price, weight, stock));
 		System.out.printf("Product added: %s (Grocery)\n", name);}
+		default -> System.out.println("Invalid product category");
 		}
 		
 	}
 	
 	private static void updateShipment(Scanner sc, WarehouseSystem sys) {
+		//prints all shipments 
 		int i=0;
 		for(Shipment sh : sys.getShipments()) {
 			System.out.printf("%d) %s\n", i, sh.allShipments());
 			i++;
 		}
+		
+		//user chooses the shipment intended to be updated 
 		System.out.print("Choose shipment index: > ");
 		int index = sc.nextInt();
 		System.out.print("Status:\n"
@@ -138,12 +145,16 @@ public class StaffMenu {
 						+ "4) DELIVERED\n"
 						+ "New status index: > ");
 		int status = sc.nextInt();
+		
+		//updates the status
+		
 		switch(status) {
 		case 0 -> sys.getShipments().get(index).setStatus(ShipmentStatus.CREATED);
 		case 1 -> sys.getShipments().get(index).setStatus(ShipmentStatus.PACKED);
 		case 2 -> sys.getShipments().get(index).setStatus(ShipmentStatus.IN_TRANSIT);
 		case 3 -> sys.getShipments().get(index).setStatus(ShipmentStatus.OUT_FOR_DELIVERY);
 		case 4 -> sys.getShipments().get(index).setStatus(ShipmentStatus.DELIVERED);
+		default -> System.out.println("Invalid shipment status");//might add validation later
 		}
 		System.out.println(sys.getShipments().get(index).allShipments());
 	}

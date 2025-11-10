@@ -1,5 +1,4 @@
-package main;
-import Products.Product;
+package Products;
 
 public class BookProduct extends Product{
 	

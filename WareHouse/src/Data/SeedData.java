@@ -1,6 +1,5 @@
 package Data;
 
-import Products.*;
 import main.WarehouseSystem;
 
 public class SeedData {

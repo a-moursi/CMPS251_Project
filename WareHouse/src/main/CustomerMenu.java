@@ -38,20 +38,16 @@ public class CustomerMenu {
 		name = current.getName();
 		
 		int choice;
-		boolean exit = false;
-		int x; //random variable to not get an error, remove later
 		do {
 			System.out.print(CUSTOMERMENU);
 			choice = sc.nextInt();//do try catch for invalid input
-			
 			switch (choice) {
-				case 1 -> x=1;
-				case 2 -> x=1;
-				case 0 -> exit=true;
-				default -> System.out.println("Invalid choice!, try again");
+				case 1 -> System.out.println("Customer menu Option 1(WIP)");
+				case 2 -> System.out.println("Customer menu Option 2 (WIP)");
+				case 0 -> choice=0;//dont like it but idk
+				default -> System.out.println("Invalid choice!, try again (Customer Menu)");
 			} 
-
-		}while(!exit);
+		}while(!(choice==0));
 	}
 	
 }
