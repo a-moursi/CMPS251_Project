@@ -8,7 +8,7 @@ public abstract class Discount {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private boolean active;
-	// hi
+	// hi, hello :)
 
 	// ------------------------------------------------------------------------------------------
 
@@ -48,19 +48,17 @@ public abstract class Discount {
 
 	// For ( Checkout )
 	public abstract String getDetails();
-	
 
 	// For ( List/Toggle Discounts ) & (Reports: [1] All Discounts)
 	public abstract String detailsTail();
-	
 
 	// For (Reports: [2] Active Discounts)
 	public abstract String ActiveDiscounts();
-	
 
 	public static boolean overlaps(Discount a, Discount b) {
 
-		if (a == null || b == null) return false;
+		if (a == null || b == null)
+			return false;
 
 		return a.startDate.isBefore(b.endDate) && a.endDate.isAfter(b.startDate);
 	}

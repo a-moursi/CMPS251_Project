@@ -1,11 +1,11 @@
 package Orders;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Discount.Discount;
 import PaymentSystem.Payment;
 import main.Customer;
-
 
 // Anas Ali Khan
 // 11/05/2025
@@ -20,8 +20,8 @@ public class Order {
 	private ArrayList<OrderItem> items;
 	private Discount appliedDiscount;
 	private Payment payment;
-	
-	 // Initializes the date to current date
+
+	// Initializes the date to current date
 	/**
 	 * @param id
 	 * @param customer
@@ -34,9 +34,9 @@ public class Order {
 	 * @param appliedDiscount
 	 * @param payment
 	 */
-	public Order(String id, Customer customer, LocalDate date,  ArrayList<OrderItem> items, double subtotal, double discountAmount,
-			double shippingFee, double total, Discount appliedDiscount, Payment payment) {
-		
+	public Order(String id, Customer customer, LocalDate date, ArrayList<OrderItem> items, double subtotal,
+			double discountAmount, double shippingFee, double total, Discount appliedDiscount, Payment payment) {
+
 		this.id = id;
 		this.customer = customer;
 		this.date = date;
@@ -48,52 +48,56 @@ public class Order {
 		this.appliedDiscount = appliedDiscount;
 		this.payment = payment;
 	}
+
 	/**
 	 * @return the id
 	 */
 	public String getId() {
 		return id;
 	}
+
 	/**
 	 * @return the customer
 	 */
 	public Customer getCustomer() {
 		return customer;
 	}
-	
+
 	/**
 	 * @return the date
 	 */
 	public LocalDate getDate() {
 		return date;
 	}
-	
+
 	/**
 	 * @return the items
 	 */
 	public ArrayList<OrderItem> getItems() {
 		return items;
 	}
-	
+
 	/**
 	 * @return the subtotal
 	 */
 	public double getSubtotal() {
 		return subtotal;
 	}
-	
+
 	/**
 	 * @return the discountAmount
 	 */
 	public double getDiscountAmount() {
 		return discountAmount;
 	}
+
 	/**
 	 * @return the shippingFee
 	 */
 	public double getShippingFee() {
 		return shippingFee;
 	}
+
 	/**
 	 * @return the total
 	 */
@@ -108,8 +112,4 @@ public class Order {
 		return appliedDiscount;
 	}
 
-	
-
-
-	
 }

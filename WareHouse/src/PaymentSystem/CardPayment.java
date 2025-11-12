@@ -1,19 +1,19 @@
 package PaymentSystem;
 
-public class CardPayment implements Payment{
+public class CardPayment implements Payment {
 	private String currency;
 	private double amount;
-	
-	private String cardHolder;  
-	private String maskedNumber; 
-	
-	//--------------------------------------------------
-	
+
+	private String cardHolder;
+	private String maskedNumber;
+
+	// --------------------------------------------------
+
 	public CardPayment(String currency, double amount, String cardHolder, String maskedNumber) {
-		//idk
+		// idk
 	}
-	
-	//--------------------------------------------
+
+	// --------------------------------------------
 
 	@Override
 	public String currency() {
@@ -26,12 +26,12 @@ public class CardPayment implements Payment{
 	}
 
 	@Override
-	public String summary() {//idk
+	public String summary() {// idk
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	//the methods have something to do with the interface thing
-	//we didnt cover it yet so leave it for later
-	
+
+	// the methods have something to do with the interface thing
+	// we didnt cover it yet so leave it for later
+
 }

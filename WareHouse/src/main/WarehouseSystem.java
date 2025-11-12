@@ -20,67 +20,62 @@ public class WarehouseSystem {
 	private ArrayList<Discount> discounts = new ArrayList<>();
 	private ArrayList<Order> orders = new ArrayList<>();
 	private ArrayList<Shipment> shipments = new ArrayList<>();
-	
-	double[] maxWeights = {2, 5, 10};//extra added vars
-	double[] fees = {10, 20, 35, 50};//extra added vars
+
+	double[] maxWeights = { 2, 5, 10 };// extra added vars
+	double[] fees = { 10, 20, 35, 50 };// extra added vars
 	private RateTable rateTable = new RateTable(maxWeights, fees);
-	
-	//------------------------------------------------------------------------------------------------
+
+	// ------------------------------------------------------------------------------------------------
 
 	public WarehouseSystem(LocalDate today) {
 		super();
 		this.today = today;
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	
+
+	// ------------------------------------------------------------------------------------------------
+
 	public LocalDate today() {
 		return null;
 	}
 
-
 	public void addCustomer(Customer c) {
-		//validation first
+		// validation first
 		customers.add(c);
 	}
-	
+
 	public ArrayList<Customer> getCustomers() {
 		return customers;
 	}
 
 	public Customer findCustomerById(String id) {
-		for(Customer c : customers) {
-			if(c.getId().equals(id)) {
+		for (Customer c : customers) {
+			if (c.getId().equals(id)) {
 				return c;
 			}
 		}
 		return null;
 	}
 
-
-	
 	public void addProduct(Product p) {
-		//validation first
+		// validation first
 		products.add(p);
 	}
 
 	public ArrayList<Product> getProducts() {
 		return products;
 	}
-	
+
 	public Product findProductById(String id) {
 		return null;
 	}
-	
-	
-	
+
 	public void addDiscount(Discount discount) {
-		//maybe i need to check before
+		// maybe i need to check before
 		discounts.add(discount);
-		//check if the new discount overlaps with any other discount
+		// check if the new discount overlaps with any other discount
 		this.deactivateOverlaps(discount); // deactivates discounts overlapping with the passed(new) discount
 	}
-	
+
 	/**
 	 * @return the discounts
 	 */
@@ -89,58 +84,38 @@ public class WarehouseSystem {
 	}
 
 	public void setDiscountActive(Discount target, boolean active) {
-		
+
 	}
-	
-	
-	
-	private void deactivateOverlaps(Discount newcomer) { //deactivates active discounts that overlap with the passes discount
-			
+
+	private void deactivateOverlaps(Discount newcomer) { // deactivates active discounts that overlap with the passes
+															// discount
+
 	}
-	
-	
-	
+
 	public void addOrder(Order order) {
-		//maybe i need to check before
+		// maybe i need to check before
 		orders.add(order);
 	}
-	
+
 	public ArrayList<Order> getOrders() {
 		return orders;
 	}
-	
-	
-	
+
 	public void addShipment(Shipment shipment) {
-		//maybe i need to check before
+		// maybe i need to check before
 		shipments.add(shipment);
 	}
-	
+
 	public ArrayList<Shipment> getShipments() {
 		return shipments;
 	}
 
-	
-	
 	public RateTable getRateTable() {
 		return rateTable;
 	}
-	
-	
 
 	public Discount findApplicableDiscount(LocalDate date) {
 		return null;
 	}
 
-
-
-
-
-	
-	
-	
-	
-	
-	
-	
 }

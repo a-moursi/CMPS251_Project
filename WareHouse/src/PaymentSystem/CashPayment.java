@@ -1,17 +1,17 @@
 package PaymentSystem;
 
-public class CashPayment implements Payment{
-	
-	private String currency; //QAR
+public class CashPayment implements Payment {
+
+	private String currency; // QAR
 	private double amount;
-	
-	//---------------------------------------
-	
+
+	// ---------------------------------------
+
 	public CashPayment(String currency, double amount) {
-		//idk
+		// idk
 	}
-	
-	//---------------------------------------------
+
+	// ---------------------------------------------
 
 	@Override
 	public String currency() {
@@ -24,16 +24,15 @@ public class CashPayment implements Payment{
 	}
 
 	@Override
-	public String summary() { //idk
+	public String summary() { // idk
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	//-------------------------------------------
 
-	//the methods have something to do with the interface thing
-	//we didnt cover it yet so leave it for later
-	
-	
-	//---------------------------------
+	// -------------------------------------------
+
+	// the methods have something to do with the interface thing
+	// we didnt cover it yet so leave it for later
+
+	// ---------------------------------
 }

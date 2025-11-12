@@ -1,4 +1,5 @@
 package Orders;
+
 import Products.Product;
 
 //Anas Ali Khan
@@ -8,6 +9,7 @@ public class OrderItem {
 	private int quantity;
 	private Product product;
 	private double unitPriceQar;
+
 	/**
 	 * @param q
 	 * @param p
@@ -19,29 +21,30 @@ public class OrderItem {
 		this.product = p;
 		this.unitPriceQar = u;
 	}
+
 	/**
 	 * @return the quantity
 	 */
 	public int getQuantity() {
 		return quantity;
 	}
+
 	/**
 	 * @return the product
 	 */
 	public Product getProduct() {
 		return product;
 	}
+
 	/**
 	 * @return the unitPriceQar
 	 */
 	public double getUnitPriceQar() {
 		return unitPriceQar;
 	}
-	
+
 	public double lineTotal() {
-		return this.quantity*this.unitPriceQar; // Calculates the line total
+		return this.quantity * this.unitPriceQar; // Calculates the line total
 	}
 
-	
-	
 }

@@ -1,4 +1,5 @@
 package main;
+
 import Products.Product;
 
 //Anas Ali Khan
@@ -7,6 +8,7 @@ import Products.Product;
 public class CartItem {
 	private int quantity;
 	private Product product;
+
 	/**
 	 * @param quantity
 	 * @param product
@@ -15,20 +17,23 @@ public class CartItem {
 		super();
 		this.product = p;
 		this.quantity = q;
-		
+
 	}
+
 	/**
 	 * @return the quantity
 	 */
 	public int getQuantity() {
 		return quantity;
 	}
+
 	/**
 	 * @return the product
 	 */
 	public Product getProduct() {
 		return product;
 	}
+
 	/**
 	 * @param quantity the quantity to set
 	 */
@@ -37,17 +42,16 @@ public class CartItem {
 	}
 
 	public double lineSubtotal() {
-		return product.getPrice()*this.quantity; // computes the line total 
-		
+		return product.getPrice() * this.quantity; // computes the line total
+
 	}
-	
+
 	public double lineWeight() {
 		return product.getWeightKg() * this.quantity; // computes the line weight
 	}
-	
+
 	public String info() {
 		return null;
 	}
-	
-	
+
 }
