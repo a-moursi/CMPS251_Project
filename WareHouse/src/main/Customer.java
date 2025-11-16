@@ -7,6 +7,7 @@ package main;
 public class Customer {
 	private String id;
 	private String name;
+	public ShoppingCart shoppingcart;//Extra added attribute 
 
 	// ----------------------------------------------------------------------------------------
 

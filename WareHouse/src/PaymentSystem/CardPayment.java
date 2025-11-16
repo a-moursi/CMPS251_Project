@@ -10,7 +10,7 @@ public class CardPayment implements Payment {
 	// --------------------------------------------------
 
 	public CardPayment(String currency, double amount, String cardHolder, String maskedNumber) {
-		// idk
+		
 	}
 
 	// --------------------------------------------
@@ -26,12 +26,9 @@ public class CardPayment implements Payment {
 	}
 
 	@Override
-	public String summary() {// idk
+	public String summary() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	// the methods have something to do with the interface thing
-	// we didnt cover it yet so leave it for later
 
 }

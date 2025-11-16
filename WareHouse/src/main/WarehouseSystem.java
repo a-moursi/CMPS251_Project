@@ -20,10 +20,8 @@ public class WarehouseSystem {
 	private ArrayList<Discount> discounts = new ArrayList<>();
 	private ArrayList<Order> orders = new ArrayList<>();
 	private ArrayList<Shipment> shipments = new ArrayList<>();
-
-	double[] maxWeights = { 2, 5, 10 };// extra added vars
-	double[] fees = { 10, 20, 35, 50 };// extra added vars
-	private RateTable rateTable = new RateTable(maxWeights, fees);
+															 //max weighs				//fees
+	private RateTable rateTable = new RateTable(new double[] { 2, 5, 10 }, new double[] { 10, 20, 35, 50 });
 
 	// ------------------------------------------------------------------------------------------------
 
@@ -66,6 +64,11 @@ public class WarehouseSystem {
 	}
 
 	public Product findProductById(String id) {
+		for (Product p : products) {
+			if (p.getId().equals(id)) {
+				return p;
+			}
+		}
 		return null;
 	}
 

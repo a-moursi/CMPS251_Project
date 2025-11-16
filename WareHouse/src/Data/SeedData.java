@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 import main.WarehouseSystem;
 
 public class SeedData {
-	public static void load(WarehouseSystem sys) {//not working now, working on fix
+	public static void load(WarehouseSystem sys) {//not working now, working on fix(Osama please fix)
 
 //		System.out.println("=== Starting up the system ===");
 //

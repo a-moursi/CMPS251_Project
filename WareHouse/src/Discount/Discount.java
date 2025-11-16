@@ -8,7 +8,6 @@ public abstract class Discount {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private boolean active;
-	// hi, hello :)
 
 	// ------------------------------------------------------------------------------------------
 
