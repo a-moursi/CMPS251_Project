@@ -51,7 +51,7 @@ public class CartItem {
 	}
 
 	public String info() {
-		return null;
+		return String.format("Product: %s, Quantity: %d", product.getName(), this.getQuantity());
 	}
 
 }

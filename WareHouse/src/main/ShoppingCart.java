@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import Orders.OrderItem;
 import Products.Product;
@@ -9,6 +10,7 @@ import Products.Product;
 //11/05/2025
 
 public class ShoppingCart {
+	Scanner input = new Scanner(System.in);
 	private ArrayList<CartItem> items = new ArrayList<>();
 
 	/**
@@ -35,15 +37,18 @@ public class ShoppingCart {
 	}
 
 	public void removeIndex(int index) {
-
+		items.remove(index); // This uses an instance method of ArrayList to remove the element
 	}
 
 	public boolean isEmpty() {
-		return true;
+		if (items.size() == 0) { // checks that size of array list is zero
+			return true;
+		}
+		return false;
 	}
 
 	public void clear() {
-
+		items.clear(); // This uses an instance method of ArrayList to clear the entire array
 	}
 
 	public double subtotal() {
