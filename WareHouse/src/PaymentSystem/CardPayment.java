@@ -1,5 +1,7 @@
 package PaymentSystem;
 
+// Anas Ali Khan, 17/11/2025
+
 public class CardPayment implements Payment {
 	private String currency;
 	private double amount;
@@ -7,17 +9,10 @@ public class CardPayment implements Payment {
 	private String cardHolder;
 	private String maskedNumber;
 
-	// --------------------------------------------------
-
-	public CardPayment(String currency, double amount, String cardHolder, String maskedNumber) {
-		
-	}
-
-	// --------------------------------------------
 
 	@Override
 	public String currency() {
-		return currency;
+		return "QAR";
 	}
 
 	@Override
@@ -27,8 +22,8 @@ public class CardPayment implements Payment {
 
 	@Override
 	public String summary() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return String.format("CardHolder name: %s, amount: %s: %.2f",this.cardHolder,this.currency,this.amount);
 	}
 
 }

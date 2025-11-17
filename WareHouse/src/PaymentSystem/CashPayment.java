@@ -1,4 +1,5 @@
 package PaymentSystem;
+//Anas Ali Khan, 17/11/2025
 
 public class CashPayment implements Payment {
 
@@ -7,15 +8,13 @@ public class CashPayment implements Payment {
 
 	// ---------------------------------------
 
-	public CashPayment(String currency, double amount) {
-		
-	}
+
 
 	// ---------------------------------------------
 
 	@Override
 	public String currency() {
-		return currency;
+		return "QAR";
 	}
 
 	@Override
@@ -26,7 +25,8 @@ public class CashPayment implements Payment {
 	@Override
 	public String summary() { 
 		// TODO Auto-generated method stub
-		return null;
+		return String.format("Amount paid:  %s: %s", this.currency,this.amount);
+		
 	}
 
 }
