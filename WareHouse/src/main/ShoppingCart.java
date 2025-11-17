@@ -52,19 +52,41 @@ public class ShoppingCart {
 	}
 
 	public double subtotal() {
-		return 0.0;
+		double subtotal = 0;   // Initialize subtotal to 0
+		for (CartItem item : items) { // loop through the items ArrayList
+			subtotal += item.getProduct().getPrice(); // get the item price and add it subtotal
+		}
+		return subtotal;
+		
+		
 	}
 
 	public double totalWeight() {
-		return 0.0;
+		double totalWeight = 0;   // Initialize totalWeight to 0
+		for (CartItem item : items) { // loop through the items ArrayList
+			totalWeight += item.getProduct().getWeightKg(); // get the item weight and add it totalWeight
+		}
+		return totalWeight;
+
 	}
 
 	public void print() {
-
+		
+		for (CartItem item : items) { // loop through the items ArrayList
+			System.out.printf("Product: %s, Quanitiy: %d, Price: %.2f ", item.getProduct(), item.getQuantity(), item.getQuantity()) ; // Display contents of ArrayList items
+		}
+		
 	}
 
 	public ArrayList<OrderItem> toOrderItems() {
-		return null;
+		ArrayList<OrderItem> orderItems = new ArrayList<>(); // Initialize an empty ArrayList orderItems
+		for (CartItem item : items) {  // loop through items
+			OrderItem orderItemToAdd = new OrderItem(item.getProduct(), item.getQuantity(), item.getProduct().getPrice()); // create an instance of OrderItem from items
+			orderItems.add(orderItemToAdd); // add to instance of OrderItem to the ArrayList
+		}
+		
+		
+		return orderItems;
 	}
-	// This works
+
 }
