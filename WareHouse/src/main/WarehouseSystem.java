@@ -86,12 +86,16 @@ public class WarehouseSystem {
 	}
 
 	public void setDiscountActive(Discount target, boolean active) {
-
+		target.setActive(active);
+		deactivateOverlaps(target);
 	}
 
-	private void deactivateOverlaps(Discount newcomer) { // deactivates active discounts that overlap with the passes
-															// discount
-
+	private void deactivateOverlaps(Discount newcomer) { // deactivates active discounts that overlap with the new discount
+		for(Discount d : discounts) {
+			if(Discount.overlaps(newcomer, d)) {
+				d.setActive(false);
+			}
+		}
 	}
 
 	public void addOrder(Order order) {

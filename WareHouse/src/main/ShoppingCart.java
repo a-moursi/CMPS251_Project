@@ -24,7 +24,7 @@ public class ShoppingCart {
 		CartItem cartItemToAdd = new CartItem(product, quantity);
 		boolean itemExists = false; // in the start I assumed that the item is not present in the cart
 		for (CartItem cartItem : items) {
-			if (cartItem.getProduct().equals(cartItemToAdd.getProduct())) { // item is present in the cart
+			if (cartItem.getProduct().getId()== cartItemToAdd.getProduct().getId()) { // item is present in the cart
 				cartItem.setQuantity(cartItem.getQuantity() + quantity); // quantity is updated
 				itemExists = true; // item is already present in the cart so the flag is set to true
 				break; // loop exists after finding a match, no need for unnecessary iterations
@@ -52,17 +52,16 @@ public class ShoppingCart {
 	}
 
 	public double subtotal() {
-		double subtotal = 0;   // Initialize subtotal to 0
+		double subtotal = 0; // Initialize subtotal to 0
 		for (CartItem item : items) { // loop through the items ArrayList
 			subtotal += item.getProduct().getPrice(); // get the item price and add it subtotal
 		}
 		return subtotal;
-		
-		
+
 	}
 
 	public double totalWeight() {
-		double totalWeight = 0;   // Initialize totalWeight to 0
+		double totalWeight = 0; // Initialize totalWeight to 0
 		for (CartItem item : items) { // loop through the items ArrayList
 			totalWeight += item.getProduct().getWeightKg(); // get the item weight and add it totalWeight
 		}
@@ -71,21 +70,23 @@ public class ShoppingCart {
 	}
 
 	public void print() {
-		
+		int i=0;
 		for (CartItem item : items) { // loop through the items ArrayList
-			System.out.printf("Product: %s, Quanitiy: %d, Price %s: %.2f ", item.getProduct().getName(), item.getQuantity(), App.currency, item.getProduct().getPrice()) ; // Display contents of ArrayList items
+			System.out.printf("%d) Product: %s, Quantity: %d, Price: %.2f %s\n", i,  item.getProduct().getName(),
+					item.getQuantity(), item.getProduct().getPrice(), App.currency); // Display contents of ArrayList items
+			i++;
 		}
-		
+
 	}
 
 	public ArrayList<OrderItem> toOrderItems() {
 		ArrayList<OrderItem> orderItems = new ArrayList<>(); // Initialize an empty ArrayList orderItems
-		for (CartItem item : items) {  // loop through items
-			OrderItem orderItemToAdd = new OrderItem(item.getProduct(), item.getQuantity(), item.getProduct().getPrice()); // create an instance of OrderItem from items
+		for (CartItem item : items) { // loop through items
+			OrderItem orderItemToAdd = new OrderItem(item.getProduct(), item.getQuantity(),
+					item.getProduct().getPrice()); // create an instance of OrderItem from items
 			orderItems.add(orderItemToAdd); // add to instance of OrderItem to the ArrayList
 		}
-		
-		
+
 		return orderItems;
 	}
 

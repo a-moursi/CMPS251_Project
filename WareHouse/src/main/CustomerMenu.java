@@ -15,7 +15,6 @@ public class CustomerMenu {
 
 		String id = null;
 		String name = null;
-
 		// shows a menu for available customers
 		System.out.println("Available Customer IDs: ");
 		ArrayList<String> availableIds = new ArrayList<>();
@@ -48,20 +47,24 @@ public class CustomerMenu {
 			System.out.print(CUSTOMERMENU);
 			choice = sc.nextInt();// do try catch for invalid input
 			switch (choice) {
-			case 1 -> ProductListView.printCategorized(sys.getProducts());//DONE
-			case 2 -> {
+			case 1 -> ProductListView.printCategorized(sys.getProducts());// DONE
+			case 2 -> {// should check if the quantity is available, and then subtract that qnty from
+						// the stock
 				System.out.print("Enter Product ID: > ");
 				String pId = sc.next();
-				System.out.print("Quantity: >");
+				System.out.print("Quantity: > ");
 				int qnty = sc.nextInt();
 				currentC.shoppingcart.addItem(sys.findProductById(pId), qnty);
-			}//DONE
-			case 3 -> {
-				System.out.println("Customer menu Option 3(WIP)");// waiting for ShoppingCart class
+			} // DONE
+			case 3 -> {// should add the product form the cart back to the stock
+				currentC.shoppingcart.print();
+				System.out.print("Enter index: > ");
+				int index = sc.nextInt();
+				currentC.shoppingcart.removeIndex(index);
 			}
-			case 4 -> currentC.shoppingcart.print();//DONE
+			case 4 -> currentC.shoppingcart.print();// DONE
 			case 5 -> {
-				System.out.println("Customer menu Option 5(WIP)");// waiting for ShoppingCart class
+				System.out.println("Customer menu Option 5(WIP)");
 			}
 			case 0 -> choice = 0;
 			default -> System.out.println("Invalid choice!, try again (Customer Menu)");

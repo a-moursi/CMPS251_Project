@@ -58,7 +58,8 @@ public abstract class Discount {
 
 		if (a == null || b == null)
 			return false;
-
+		else if (a == b)
+			return false;
 		return a.startDate.isBefore(b.endDate) && a.endDate.isAfter(b.startDate);
 	}
 

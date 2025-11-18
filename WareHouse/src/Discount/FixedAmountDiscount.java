@@ -33,7 +33,7 @@ public class FixedAmountDiscount extends Discount {
 	}
 
 	@Override
-	public String ActiveDiscounts() {
+	public String ActiveDiscounts() {//not complete
 
 		return String.format("Fixed(%s) QAR %.2f [%s to %s]", getCode(), amountQar, getStartDate(), getEndDate());
 	}

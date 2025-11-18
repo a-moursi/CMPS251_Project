@@ -22,7 +22,7 @@ public class App {
 	// MENU
 	// CONSTANTS==============================================================================================
 
-	private static final String WHMENU = "=== Single-Warehouse System (" + currency + ") === \r\n"
+	private static final String WHMENU = "\n=== Single-Warehouse System (" + currency + ") === \r\n"
 			+ "1) Staff Menu \r\n" + "2) Customer Menu \r\n" + "0) Exit\r\n\n" + "Choice > ";
 
 	// ============================================================================================================
@@ -41,7 +41,12 @@ public class App {
 			choice = sc.nextInt();// do try catch for invalid input
 			switch (choice) {
 			case 1 -> StaffMenu.run(sc, sys);
-			case 2 -> CustomerMenu.run(sc, sys);
+			case 2 -> {
+				if (sys.getCustomers().size() == 0)
+					System.out.println("No customers in the system");
+				else
+					CustomerMenu.run(sc, sys);
+			}
 			case 0 -> exitSystem();
 			default -> System.out.println("Invalid choice!, try again(Main Menu)");
 			}

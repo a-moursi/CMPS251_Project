@@ -13,7 +13,7 @@ import Shipment.*;
 
 public class StaffMenu {
 
-	public static void run(Scanner sc, WarehouseSystem sys) {//DONE
+	public static void run(Scanner sc, WarehouseSystem sys) {// DONE
 
 		final String STAFFMENU = "\n--- Staff Menu --\r\n" + "1) Add Customer (ID + Name) \r\n"
 				+ "2) List/Toggle Discounts \r\n" + "3) Create Discount\r\n" + "4) Add Product \r\n"
@@ -31,14 +31,14 @@ public class StaffMenu {
 			case 3 -> createDiscount(sc, sys);
 			case 4 -> addProduct(sc, sys);
 			case 5 -> updateShipment(sc, sys);
-			case 6 -> System.out.println("Option 6 not implemented yet");// Reports
+			case 6 -> System.out.println("Option 6 not implemented yet");// waiting for the ReportService class
 			case 0 -> choice = 0;
-			default -> System.out.println("Invalid choice!, try again(Staff Menu)/n");
+			default -> System.out.println("Invalid choice!, try again(Staff Menu)");
 			}
 		} while (!(choice == 0));
 	}
 
-	private static void addCustomer(Scanner sc, WarehouseSystem sys) {//DONE
+	private static void addCustomer(Scanner sc, WarehouseSystem sys) {// DONE
 		// get customer info and make a new customer and pass it (id and name)
 		System.out.print("Customer ID: > ");
 		String id = sc.next();
@@ -51,25 +51,23 @@ public class StaffMenu {
 
 	}
 
-	private static void listToggleDiscounts(Scanner sc, WarehouseSystem sys) {//almost done
-		// print discount list
+	private static void listToggleDiscounts(Scanner sc, WarehouseSystem sys) {// DONE
 		int i = 0;
 		for (Discount d : sys.getDiscounts()) {
 			System.out.printf("%d) %s\n", i, d.detailsTail());
 			i++;
 		}
 		System.out.print("Enter index to toggle (blank to skip): > ");
-		int index = sc.nextInt();
-		Discount currentD = sys.getDiscounts().get(index);
-		currentD.setActive(!sys.getDiscounts().get(index).isActive());
-		for(Discount d : sys.getDiscounts()) {
-			if(Discount.overlaps(currentD, d)) {
-				d.setActive(false);
-			}
+		String input = sc.nextLine();
+		input = sc.nextLine();
+		if (!(input.isBlank())) {
+			int index = Integer.parseInt(input);
+			Discount currentD = sys.getDiscounts().get(index);
+			sys.setDiscountActive(currentD, !(sys.getDiscounts().get(index).isActive()));
 		}
 	}
 
-	private static void createDiscount(Scanner sc, WarehouseSystem sys) {//DONE
+	private static void createDiscount(Scanner sc, WarehouseSystem sys) {// DONE
 
 		// prints the menu and saves the needed data in variables
 		System.out.print("Type: 1) Fixed Amount 2) Percentage\n> ");
@@ -82,30 +80,27 @@ public class StaffMenu {
 		LocalDate end = LocalDate.parse(sc.next());
 		System.out.print("Create as Active? (y/n): > ");
 		boolean active = (sc.next().toLowerCase().equals("y")) ? true : false;
-
+		
 		// prints a different success message for each discount type
-		do {
-			switch (choice) {
-			case 1 -> {
-				System.out.print("Amount (e.g., 10 for 10 QAR): > ");
-				double amount = sc.nextDouble();
-				sys.addDiscount(new FixedAmountDiscount(code, start, end, active, amount));
-			}
-			case 2 -> {
-				System.out.print("Percent (e.g., 10 for 10%): > ");
-				double percent = sc.nextDouble();
-				sys.addDiscount(new PercentageDiscount(code, start, end, active, percent));
-			}
-			default -> {
-				System.out.println("Invalid Discount type\n");
-				choice = 0;
-			}
-			}
-		} while (choice == 0);
-
+		switch (choice) {
+		case 1 -> {
+			System.out.print("Amount (e.g., 10 for 10 QAR): > ");
+			double amount = sc.nextDouble();
+			sys.addDiscount(new FixedAmountDiscount(code, start, end, active, amount));
+		}
+		case 2 -> {
+			System.out.print("Percent (e.g., 10 for 10%): > ");
+			double percent = sc.nextDouble();
+			sys.addDiscount(new PercentageDiscount(code, start, end, active, percent));
+		}
+		default -> {
+			System.out.println("Invalid Discount type\n");
+			choice = 0;
+		}
+		}
 	}
 
-	private static void addProduct(Scanner sc, WarehouseSystem sys) {//DONE
+	private static void addProduct(Scanner sc, WarehouseSystem sys) {// DONE
 
 		// prints the menu and saves the needed data in variables
 		System.out.println("Category: 1) Book 2) Electronic 3) Grocery\n> ");
@@ -141,7 +136,7 @@ public class StaffMenu {
 		}
 	}
 
-	private static void updateShipment(Scanner sc, WarehouseSystem sys) {//DONE
+	private static void updateShipment(Scanner sc, WarehouseSystem sys) {// DONE
 		// prints all shipments
 		int i = 0;
 		for (Shipment sh : sys.getShipments()) {
