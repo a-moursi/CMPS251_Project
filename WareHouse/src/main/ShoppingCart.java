@@ -73,7 +73,7 @@ public class ShoppingCart {
 	public void print() {
 		
 		for (CartItem item : items) { // loop through the items ArrayList
-			System.out.printf("Product: %s, Quanitiy: %d, Price: %.2f ", item.getProduct(), item.getQuantity(), item.getQuantity()) ; // Display contents of ArrayList items
+			System.out.printf("Product: %s, Quanitiy: %d, Price %s: %.2f ", item.getProduct().getName(), item.getQuantity(), App.currency, item.getProduct().getPrice()) ; // Display contents of ArrayList items
 		}
 		
 	}

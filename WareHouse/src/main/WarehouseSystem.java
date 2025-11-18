@@ -26,7 +26,6 @@ public class WarehouseSystem {
 	// ------------------------------------------------------------------------------------------------
 
 	public WarehouseSystem(LocalDate today) {
-		super();
 		this.today = today;
 	}
 

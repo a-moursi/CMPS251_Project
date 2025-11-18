@@ -48,18 +48,18 @@ public class CustomerMenu {
 			System.out.print(CUSTOMERMENU);
 			choice = sc.nextInt();// do try catch for invalid input
 			switch (choice) {
-			case 1 -> ProductListView.printCategorized(sys.getProducts());
+			case 1 -> ProductListView.printCategorized(sys.getProducts());//DONE
 			case 2 -> {
 				System.out.print("Enter Product ID: > ");
 				String pId = sc.next();
 				System.out.print("Quantity: >");
 				int qnty = sc.nextInt();
 				currentC.shoppingcart.addItem(sys.findProductById(pId), qnty);
-			}
+			}//DONE
 			case 3 -> {
 				System.out.println("Customer menu Option 3(WIP)");// waiting for ShoppingCart class
 			}
-			case 4 -> currentC.shoppingcart.print();
+			case 4 -> currentC.shoppingcart.print();//DONE
 			case 5 -> {
 				System.out.println("Customer menu Option 5(WIP)");// waiting for ShoppingCart class
 			}

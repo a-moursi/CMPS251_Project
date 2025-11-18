@@ -13,7 +13,7 @@ import Shipment.*;
 
 public class StaffMenu {
 
-	public static void run(Scanner sc, WarehouseSystem sys) {
+	public static void run(Scanner sc, WarehouseSystem sys) {//DONE
 
 		final String STAFFMENU = "\n--- Staff Menu --\r\n" + "1) Add Customer (ID + Name) \r\n"
 				+ "2) List/Toggle Discounts \r\n" + "3) Create Discount\r\n" + "4) Add Product \r\n"
@@ -38,7 +38,7 @@ public class StaffMenu {
 		} while (!(choice == 0));
 	}
 
-	private static void addCustomer(Scanner sc, WarehouseSystem sys) {
+	private static void addCustomer(Scanner sc, WarehouseSystem sys) {//DONE
 		// get customer info and make a new customer and pass it (id and name)
 		System.out.print("Customer ID: > ");
 		String id = sc.next();
@@ -51,17 +51,25 @@ public class StaffMenu {
 
 	}
 
-	private static void listToggleDiscounts(Scanner sc, WarehouseSystem sys) {
+	private static void listToggleDiscounts(Scanner sc, WarehouseSystem sys) {//almost done
 		// print discount list
-		int i = 1;
+		int i = 0;
 		for (Discount d : sys.getDiscounts()) {
 			System.out.printf("%d) %s\n", i, d.detailsTail());
 			i++;
 		}
-		// toggle the chosen discount
+		System.out.print("Enter index to toggle (blank to skip): > ");
+		int index = sc.nextInt();
+		Discount currentD = sys.getDiscounts().get(index);
+		currentD.setActive(!sys.getDiscounts().get(index).isActive());
+		for(Discount d : sys.getDiscounts()) {
+			if(Discount.overlaps(currentD, d)) {
+				d.setActive(false);
+			}
+		}
 	}
 
-	private static void createDiscount(Scanner sc, WarehouseSystem sys) {
+	private static void createDiscount(Scanner sc, WarehouseSystem sys) {//DONE
 
 		// prints the menu and saves the needed data in variables
 		System.out.print("Type: 1) Fixed Amount 2) Percentage\n> ");
@@ -97,7 +105,7 @@ public class StaffMenu {
 
 	}
 
-	private static void addProduct(Scanner sc, WarehouseSystem sys) {
+	private static void addProduct(Scanner sc, WarehouseSystem sys) {//DONE
 
 		// prints the menu and saves the needed data in variables
 		System.out.println("Category: 1) Book 2) Electronic 3) Grocery\n> ");
@@ -133,7 +141,7 @@ public class StaffMenu {
 		}
 	}
 
-	private static void updateShipment(Scanner sc, WarehouseSystem sys) {
+	private static void updateShipment(Scanner sc, WarehouseSystem sys) {//DONE
 		// prints all shipments
 		int i = 0;
 		for (Shipment sh : sys.getShipments()) {
