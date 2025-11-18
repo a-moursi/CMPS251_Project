@@ -9,6 +9,15 @@ public class CardPayment implements Payment {
 	private String cardHolder;
 	private String maskedNumber;
 
+	
+	
+	public CardPayment(String currency, double amount, String cardHolder, String maskedNumber) {
+		super();
+		this.currency = "QAR";
+		this.amount = amount;
+		this.cardHolder = cardHolder;
+		this.maskedNumber = maskedNumber;
+	}
 
 	@Override
 	public String currency() {
@@ -23,7 +32,7 @@ public class CardPayment implements Payment {
 	@Override
 	public String summary() {
 		
-		return String.format("CardHolder name: %s, amount: %s: %.2f",this.cardHolder,this.currency,this.amount);
+		return String.format("Card payment: %s (%s), amount: %.2f  %s",this.cardHolder,this.maskedNumber ,this.amount, this.currency);
 	}
 
 }

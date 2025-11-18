@@ -10,7 +10,6 @@ import Products.Product;
 //11/05/2025
 
 public class ShoppingCart {
-	Scanner input = new Scanner(System.in);
 	private ArrayList<CartItem> items = new ArrayList<>();
 
 	/**
@@ -24,7 +23,7 @@ public class ShoppingCart {
 		CartItem cartItemToAdd = new CartItem(product, quantity);
 		boolean itemExists = false; // in the start I assumed that the item is not present in the cart
 		for (CartItem cartItem : items) {
-			if (cartItem.getProduct().getId()== cartItemToAdd.getProduct().getId()) { // item is present in the cart
+			if (cartItem.getProduct().getId().equals(cartItemToAdd.getProduct().getId())) { // item is present in the cart
 				cartItem.setQuantity(cartItem.getQuantity() + quantity); // quantity is updated
 				itemExists = true; // item is already present in the cart so the flag is set to true
 				break; // loop exists after finding a match, no need for unnecessary iterations
@@ -41,10 +40,7 @@ public class ShoppingCart {
 	}
 
 	public boolean isEmpty() {
-		if (items.size() == 0) { // checks that size of array list is zero
-			return true;
-		}
-		return false;
+		return items.isEmpty();
 	}
 
 	public void clear() {
@@ -54,7 +50,7 @@ public class ShoppingCart {
 	public double subtotal() {
 		double subtotal = 0; // Initialize subtotal to 0
 		for (CartItem item : items) { // loop through the items ArrayList
-			subtotal += item.getProduct().getPrice(); // get the item price and add it subtotal
+			subtotal += item.lineSubtotal(); // get the item price and add it subtotal
 		}
 		return subtotal;
 
@@ -63,7 +59,7 @@ public class ShoppingCart {
 	public double totalWeight() {
 		double totalWeight = 0; // Initialize totalWeight to 0
 		for (CartItem item : items) { // loop through the items ArrayList
-			totalWeight += item.getProduct().getWeightKg(); // get the item weight and add it totalWeight
+			totalWeight += item.lineWeight(); // get the item weight and add it totalWeight
 		}
 		return totalWeight;
 
@@ -72,10 +68,12 @@ public class ShoppingCart {
 	public void print() {
 		int i=0;
 		for (CartItem item : items) { // loop through the items ArrayList
-			System.out.printf("%d) Product: %s, Quantity: %d, Price: %.2f %s\n", i,  item.getProduct().getName(),
+			System.out.printf("%d) Product: %s, Quantity: %d, Price: %.2f %s \n", i,  item.getProduct().getName(),
 					item.getQuantity(), item.getProduct().getPrice(), App.currency); // Display contents of ArrayList items
 			i++;
 		}
+		System.out.printf("Subtotal: %.2f %s", subtotal(), App.currency);
+		
 
 	}
 

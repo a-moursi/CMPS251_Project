@@ -7,7 +7,11 @@ public class CashPayment implements Payment {
 	private double amount;
 
 	// ---------------------------------------
-
+	public CashPayment(String currency, double amount) {
+		super();
+		this.currency = currency;
+		this.amount = amount;
+	}
 
 
 	// ---------------------------------------------
@@ -17,6 +21,8 @@ public class CashPayment implements Payment {
 		return "QAR";
 	}
 
+
+
 	@Override
 	public double amount() {
 		return amount;
@@ -25,7 +31,7 @@ public class CashPayment implements Payment {
 	@Override
 	public String summary() { 
 		// TODO Auto-generated method stub
-		return String.format("Amount paid:  %s: %s", this.currency,this.amount);
+		return String.format("Amount paid:  %s: %.2f", this.currency,this.amount);
 		
 	}
 
