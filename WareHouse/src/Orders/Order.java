@@ -34,12 +34,12 @@ public class Order {
 	 * @param appliedDiscount
 	 * @param payment
 	 */
-	public Order(String id, Customer customer, LocalDate date, ArrayList<OrderItem> items, double subtotal,
+	public Order(Customer customer, ArrayList<OrderItem> items, double subtotal,
 			double discountAmount, double shippingFee, double total, Discount appliedDiscount, Payment payment) {
 
-		this.id = id;
+		this.id = OrderIdGenerator.nextId();
 		this.customer = customer;
-		this.date = date;
+		this.date = LocalDate.now();
 		this.items = items;
 		this.subtotal = subtotal;
 		this.discountAmount = discountAmount;

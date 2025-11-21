@@ -3,6 +3,7 @@ package main;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import Data.ReportService;
 import Discount.*;
 import Products.*;
 import Shipment.*;
@@ -31,7 +32,7 @@ public class StaffMenu {
 			case 3 -> createDiscount(sc, sys);
 			case 4 -> addProduct(sc, sys);
 			case 5 -> updateShipment(sc, sys);
-			case 6 -> System.out.println("Option 6 not implemented yet");// waiting for the ReportService class
+			case 6 -> ReportService.runAllReports(sys);      //System.out.println("Option 6 not implemented yet"); waiting for the ReportService class
 			case 0 -> choice = 0;
 			default -> System.out.println("Invalid choice!, try again(Staff Menu)");
 			}

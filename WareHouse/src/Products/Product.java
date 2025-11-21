@@ -74,7 +74,7 @@ public abstract class Product {
 	// -------------------------------------
 
 	public String basicInfo() {
-		String info = String.format("test%s", name);
+		String info = String.format("-%s (%s) stock %d", name, id, stockQty);
 		return info;
 	}
 

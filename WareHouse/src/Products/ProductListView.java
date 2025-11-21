@@ -9,8 +9,8 @@ public class ProductListView {
 //		products.sort(null);// add the lambda method to compare the products where electronics come first
 //							// then books then groceries
 		for (Product p : products) {
-			System.out.printf("%s: %s (ID:%s), stock: %d, price: %.2f %s\n", p.getCategory().replace("Product", ""),
-					p.getName(), p.getId(), p.getStock(), p.getPrice(), App.currency);
+			System.out.printf("%s: %s (ID:%s), stock: %d, price %s %.2f \n", p.getCategory().replace("Product", ""),
+					p.getName(), p.getId(), p.getStock(), App.currency, p.getPrice());
 		}
 	}
 }
