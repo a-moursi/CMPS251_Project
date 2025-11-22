@@ -72,22 +72,43 @@ public  class ReportService {
 		for (Product product: s.getProducts()) {
 			sum += product.getPrice()*product.getStock();
 		}
-		System.out.println("Total: QAR" + sum);
+		
+		
+
+		
 		
 		
 		
 		System.out.println("[7] Orders Today (2025-10-24): ");  // Need to work on displaying the date
 		
+		System.out.println("Total: QAR" + sum);
+		for (Order order : s.getOrders()) {
+			System.out.printf("- %s |  %s  |  QAR  %.2f", order.getId(), padName(order.getCustomer().getName()), order.getTotal());
+		}
 		
 		
 		System.out.println("[8] Sales by Customer (QAR): ");
+		
+		
+		for (Customer customer : s.getCustomers()) {
+			System.out.printf("- %s:  |  QAR  %.2f", padName(customer.getName()), customer.shoppingcart.subtotal());
+			
+		}
 		
 		
 		
 		
 		System.out.println("[9] Shipments by Status: ");
 		
+		for (Shipment shipment : s.getShipments()) {
+			shipment.allShipments();
+		}
+		
 		System.out.println("[10] Shipments not yet DELIVERED: ");
+		
+		for (Shipment shipment : s.getShipments()) {
+			shipment.notDelivered();
+		}
 		
 		
 		
@@ -114,6 +135,8 @@ public  class ReportService {
 	
 	
 	private static String padName(String n) {
-		return null;
+		
+		
+		return String.format("%-15s", n);
 	}
 }

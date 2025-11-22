@@ -95,6 +95,7 @@ public class Order {
 	 * @return the shippingFee
 	 */
 	public double getShippingFee() {
+		this.shippingFee += this.total;
 		return shippingFee;
 	}
 
@@ -103,13 +104,15 @@ public class Order {
 	 */
 	public double getTotal() {
 		return total;
+		
 	}
 
 	/**
 	 * @return the appliedDiscount
 	 */
 	public Discount getAppliedDiscount() {
-		return appliedDiscount;
+		
+		return this.appliedDiscount;
 	}
 
 }
