@@ -37,8 +37,10 @@ public  class ReportService {
 		System.out.printf("[2] Active Dicounts:  \n"); // need to display day and full date
 		
 		for (Discount discount : s.getDiscounts()) {
-			discount.ActiveDiscounts();
-		}
+			if (discount.isActive()) discount.ActiveDiscounts();
+			
+			}
+		
 		System.out.printf("[3] Products by Category:\r\n");
 		
 		ProductListView.printCategorized(s.getProducts());
@@ -107,7 +109,7 @@ public  class ReportService {
 		System.out.println("[10] Shipments not yet DELIVERED: ");
 		
 		for (Shipment shipment : s.getShipments()) {
-			shipment.notDelivered();
+			if (shipment.getStatus() != ShipmentStatus.DELIVERED) shipment.notDelivered();
 		}
 		
 		
