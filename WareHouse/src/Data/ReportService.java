@@ -9,7 +9,7 @@ import Shipment.*;
 public class ReportService {
 	public static void runAllReports(WarehouseSystem s) {
 
-<<<<<<< HEAD
+
 		System.out.println("1) All Discounts \r\n" + "2) Active Discounts (today) \r\n" + "3) Products by Category \r\n"
 				+ "4) Low Stock (≤ threshold) \r\n" + "5) Out of Stock \r\n" + "6) Inventory Valuation (QAR) \r\n"
 				+ "7) Orders Today (YYYY-MM-DD) \r\n" + "8) Sales by Customer (QAR) \r\n"
@@ -18,7 +18,7 @@ public class ReportService {
 				+ "13) Payments Summary (from Orders) \r\n" + "14) Discount Usage \r\n"
 				+ "15) Active Discount Overlaps (today) " + "\n\n\t\t === Reports Output (Staff) === ");
 
-=======
+
 		System.out.println("1) All Discounts \r\n"
 				+ "2) Active Discounts (today) \r\n"
 				+ "3) Products by Category \r\n"
@@ -36,7 +36,7 @@ public class ReportService {
 				+ "15) Active Discount Overlaps (today) "
 				+ "\n\n\t\t === Reports Output (Staff) === ");
 		
->>>>>>> branch 'main' of https://github.com/a-moursi/CMPS251_Project.git
+
 		System.out.printf("[1] All Discounts: \n");
 
 		for (Discount discount : s.getDiscounts()) {
