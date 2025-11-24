@@ -3,6 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Products.Product;
 import Products.ProductListView;
 
 //Name: Abdelrahman Moursi
@@ -45,25 +46,36 @@ public class CustomerMenu {
 		int choice;
 		do {
 			System.out.print(CUSTOMERMENU);
-			choice = sc.nextInt();// do try catch for invalid input
+			choice = sc.nextInt();
 			switch (choice) {
 			case 1 -> ProductListView.printCategorized(sys.getProducts());// DONE
-			case 2 -> {// should check if the quantity is available, and then subtract that qnty from
-						// the stock
+			case 2 -> {//checks if the quantity is available, and then subtract that qnty from
+						// the stock, before adding item to cart
 				System.out.print("Enter Product ID: > ");
 				String pId = sc.next();
 				System.out.print("Quantity: > ");
 				int qnty = sc.nextInt();
-				currentC.shoppingcart.addItem(sys.findProductById(pId), qnty);
+				Product added = sys.findProductById(pId);
+				if(added.getStock() <= qnty) {
+					added.setStock(added.getStock()-qnty);// subtract from the available stock
+					currentC.shoppingcart.addItem(sys.findProductById(pId), qnty);//add to cart 
+				}else {
+					System.out.println("Stock is not enough!");
+				}
+				
 			} // DONE
-			case 3 -> {// should add the product form the cart back to the stock
+			case 3 -> {//adds the qnty from the cart back to the stock, before removing the item
 				currentC.shoppingcart.print();
 				System.out.print("Enter index: > ");
 				int index = sc.nextInt();
-				currentC.shoppingcart.removeIndex(index);
+				CartItem removedItem = currentC.shoppingcart.getItems().get(index);
+				Product removed = currentC.shoppingcart.getItems().get(index).getProduct();
+				
+				removed.setStock(removed.getStock()+removedItem.getQuantity());//adds the qnty back to stock
+				currentC.shoppingcart.removeIndex(index);//remove from cart 
 			}
 			case 4 -> currentC.shoppingcart.print();// DONE
-			case 5 -> {
+			case 5 -> {//checkout
 				System.out.println("Customer menu Option 5(WIP)");
 			}
 			case 0 -> choice = 0;
