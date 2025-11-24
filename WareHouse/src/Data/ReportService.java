@@ -27,7 +27,6 @@ public  class ReportService {
 				+ "15) Active Discount Overlaps (today) "
 				+ "\n\n\t\t === Reports Output (Staff) === ");
 		
-		
 		System.out.printf("[1] All Discounts: \n");
 		
 		for (Discount discount : s.getDiscounts()) {
