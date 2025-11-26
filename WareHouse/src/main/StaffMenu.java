@@ -121,15 +121,15 @@ public class StaffMenu {
 		// ArrayList
 		switch (choice) {
 		case 1 -> {
-			sys.addProduct(new BookProduct(id, name, App.currency, price, weight, stock));
+			sys.addProduct(new BookProduct(id, name, price, weight, stock));
 			System.out.printf("Product added: %s (Book)\n", name);
 		}
 		case 2 -> {
-			sys.addProduct(new ElectronicProduct(id, name, App.currency, price, weight, stock));
+			sys.addProduct(new ElectronicProduct(id, name, price, weight, stock));
 			System.out.printf("Product added: %s (Electronic)\n", name);
 		}
 		case 3 -> {
-			sys.addProduct(new GroceryProduct(id, name, App.currency, price, weight, stock));
+			sys.addProduct(new GroceryProduct(id, name, price, weight, stock));
 			System.out.printf("Product added: %s (Grocery)\n", name);
 		}
 		default -> System.out.println("Invalid product category\n");

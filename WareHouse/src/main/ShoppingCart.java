@@ -50,7 +50,7 @@ public class ShoppingCart {
 	public double subtotal() {
 		double subtotal = 0; // Initialize subtotal to 0
 		for (CartItem item : items) { // loop through the items ArrayList
-			subtotal += item.lineSubtotal(); // get the item price and add it subtotal
+			subtotal += item.lineSubtotal(); // get the lineSubtotal and add it subtotal
 		}
 		return subtotal;
 

@@ -132,9 +132,15 @@ public class ReportService {
 		
 		
 		System.out.println("[13] Payments Summary (from Orders): ");
+//		double totalPayment = 0;
+//		for (Order order : s.getOrders()) {
+//			totalPayment += order.
+//		}
 		
 
 		System.out.println("[14] Discount Usage: ");
+		
+		
 
 		System.out.println("[15] Active Discount Overlaps (today 2025-10-24): "); // Need date to be formatted
 		

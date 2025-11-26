@@ -17,10 +17,10 @@ public abstract class Product {
 
 	// ----------------------------
 
-	protected Product(String id, String name, String currency, double price, double weightKg, int stockQty) {
+	protected Product(String id, String name, double price, double weightKg, int stockQty) {
 		this.id = id;
 		this.name = name;
-		this.currency = currency;
+		this.currency = "QAR";
 		setPrice(price);
 		setWeightKg(weightKg);
 		setStock(stockQty);
