@@ -1,5 +1,6 @@
 package main;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ import Products.Product;
 //Anas Ali Khan
 //11/05/2025
 
-public class ShoppingCart {
+public class ShoppingCart implements Serializable {
 	private ArrayList<CartItem> items = new ArrayList<>();
 
 	/**

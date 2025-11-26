@@ -62,19 +62,19 @@ public class App {
 		System.out.print("Saving Data ");
 		ObjectOutputStream out = null;
 		try {
-			out = new ObjectOutputStream(new FileOutputStream("Customer_Data"));
+			out = new ObjectOutputStream(new FileOutputStream("Customer_Data.dat"));
 			out.writeObject(sys.getCustomers());
 			out.close();
 
-			out = new ObjectOutputStream(new FileOutputStream("Discount_Data"));
+			out = new ObjectOutputStream(new FileOutputStream("Discount_Data.dat"));
 			out.writeObject(sys.getDiscounts());
 			out.close();
 
-			out = new ObjectOutputStream(new FileOutputStream("Order_Data"));
+			out = new ObjectOutputStream(new FileOutputStream("Order_Data.dat"));
 			out.writeObject(sys.getOrders());
 			out.close();
 
-			out = new ObjectOutputStream(new FileOutputStream("Shipment_Data"));
+			out = new ObjectOutputStream(new FileOutputStream("Shipment_Data.dat"));
 			out.writeObject(sys.getShipments());
 			out.close();
 		} catch (IOException ioe) {
