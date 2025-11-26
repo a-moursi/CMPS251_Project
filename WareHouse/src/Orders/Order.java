@@ -1,5 +1,6 @@
 package Orders;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ import main.Customer;
 
 // Anas Ali Khan
 // 11/05/2025
-public class Order {
+public class Order implements Serializable  {
 	private String id;
 	private LocalDate date = LocalDate.now();
 	private double subtotal;

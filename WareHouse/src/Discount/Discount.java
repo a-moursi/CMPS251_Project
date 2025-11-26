@@ -1,8 +1,9 @@
 package Discount;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Discount {
+public abstract class Discount implements Serializable {
 
 	private String code;
 	private LocalDate startDate;

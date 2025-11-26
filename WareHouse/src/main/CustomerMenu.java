@@ -56,7 +56,7 @@ public class CustomerMenu {
 				System.out.print("Quantity: > ");
 				int qnty = sc.nextInt();
 				Product added = sys.findProductById(pId);
-				if(added.getStock() <= qnty) {
+				if(added.getStock() >= qnty) {
 					added.setStock(added.getStock()-qnty);// subtract from the available stock
 					currentC.shoppingcart.addItem(sys.findProductById(pId), qnty);//add to cart 
 				}else {

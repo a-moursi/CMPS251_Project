@@ -66,9 +66,11 @@ public class SeedData {
 				e.printStackTrace();
 			}
 			readData.close();
-		} catch (IOException ioe) {
-			System.out.println(ioe);
+		} catch (IOException e ) {
+			System.out.println(e);
 		}
+		
+		
 	}
 
 	private static void addElectronics(WarehouseSystem s, String id, String name, double price, double w,

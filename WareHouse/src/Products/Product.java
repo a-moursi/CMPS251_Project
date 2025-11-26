@@ -1,10 +1,12 @@
 package Products;
 
+import java.io.Serializable;
+
 //Name: Abdelrahman Moursi
 //ID: 202406103
 //Date: 01-11-2025
 
-public abstract class Product {
+public abstract class Product implements Serializable  {
 
 	private String id;
 	private String name;

@@ -1,8 +1,10 @@
 package Shipment;
 
+import java.io.Serializable;
+
 import main.Customer;
 
-public class Shipment {
+public class Shipment implements Serializable {
 
 	private String orderId;
 	private Customer customer;
