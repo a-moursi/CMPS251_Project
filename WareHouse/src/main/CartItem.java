@@ -1,11 +1,13 @@
 package main;
 
+import java.io.Serializable;
+
 import Products.Product;
 
 //Anas Ali Khan
 //11/05/2025
 
-public class CartItem {
+public class CartItem implements Serializable {
 	private int quantity;
 	private Product product;
 
