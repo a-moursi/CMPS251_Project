@@ -1,8 +1,7 @@
 package Data;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import Discount.*;
 import main.*;
 import Orders.*;
@@ -99,13 +98,13 @@ public class ReportService {
 		for (Customer customer : s.getCustomers()) {
 			double customerTotal = 0;
 			for (Order order : s.getOrders()) {
-				if (order.getCustomer().getId() == customer.getId()) {
+				if (order.getCustomer().getId().equals(customer.getId())) {
 					customerTotal += order.getTotal();
 				}
 				
 			}
 		
-			System.out.printf("- %s:  |  QAR  %.2f", padName(customer.getName()), customer.shoppingcart.subtotal());
+			System.out.printf("- %s:  |  QAR  %.2f", padName(customer.getName()), customerTotal);
 
 		}
 
@@ -121,11 +120,35 @@ public class ReportService {
 			if (shipment.getStatus() != ShipmentStatus.DELIVERED) shipment.notDelivered();
 		}
 
-		
+
+
 		System.out.println("[11] Simple Top-Selling (counts): ");
+
+		ArrayList<Product> sortedList = new ArrayList<>(s.getProducts());
 		
-	
+		sortedList.sort((p1,p2) -> {
+			int count1 = getSalesCount(p1, s); // gets quantity sold of p1
+			int count2 = getSalesCount(p2, s); // gets quantity sold of p2
 			
+			return Integer.compare(count2, count1);
+			// count2 is placed first so that it sorts in descending order
+			
+		});
+		
+		
+		
+		for (Product p : sortedList) {
+			int count = getSalesCount(p,s);
+			if (count > 0) {
+				String label = (count == 1) ? "unit" : "units";
+				System.out.printf("-%s (%s): %d %s\n", p.getName(), p.getId(), count, label);
+
+			}
+		
+			
+		}
+		
+
 		
 
 		System.out.println("[12] Total Revenue (QAR, all time): ");
@@ -207,5 +230,20 @@ public class ReportService {
 	private static String padName(String n) {
 
 		return String.format("%-15s", n);
+	}
+	
+	// helper method for this option
+	public static int getSalesCount(Product p, WarehouseSystem s) {
+		int count = 0;
+		for (Order order : s.getOrders()) { // checking orders because it stores all the final orders
+			for (OrderItem orderItem : order.getItems()) {
+				if (orderItem.getProduct().getId().equals(p.getId())) {
+					count += orderItem.getQuantity();
+					break;
+				}
+			}
+		}
+			
+		return count;
 	}
 }

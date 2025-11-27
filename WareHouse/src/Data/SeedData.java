@@ -186,3 +186,158 @@ public class SeedData {
 
 	}
 }
+
+
+
+/*
+ * 
+ * 
+ * 
+ * public class SeedData {
+	public static void load(WarehouseSystem s) {
+		
+		File customerFile = new File("Customer_Data.dat");
+		File discountsFile = new File("Discount_Data.dat");
+		File orderFile = new File("Order_Data.dat");
+		File shipmentFile = new File("Shipment_Data.dat");
+		File productFile = new File("Product_Data.dat");
+		
+		
+		customerFile = (customerFile.exists()) ? new File("Customer_Data.dat") :  new File("Customer_Seed.dat");
+		discountsFile = (discountsFile.exists()) ? new File("Discount_Data.dat") : new File("Discount_Seed.dat");
+		orderFile = (orderFile.exists()) ? new File("Order_Data.dat") :  new File("Order_Seed.dat");
+		shipmentFile = (shipmentFile.exists()) ? new File("Shipment_Data.dat") :  new File("Shipment_Seed.dat");
+		productFile = (productFile.exists()) ? new File("Product_Data.dat") : new File("Product_Seed.dat");
+		
+		
+		System.out.println("=== Starting up the system ===");
+
+		// data-------------------------------------------------------------------------------------------------
+		System.out.print("Loading Data ");
+		ObjectInputStream readData = null; // load customers
+		try {
+			readData = new ObjectInputStream(new FileInputStream(customerFile));
+			ArrayList<Customer> customer;
+			customer = (ArrayList<Customer>) readData.readObject();
+			s.getCustomers().addAll(customer);
+
+		} catch (IOException e) {
+			System.out.println("Error reading Customer_Data " + e.getMessage());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			if (readData != null) {
+				try {
+					readData.close();
+				} catch (IOException e) {
+					System.out.println(e);
+				}
+			}
+		}
+		
+		
+		 readData = null; // load customers
+		try {
+			readData = new ObjectInputStream(new FileInputStream(productFile));
+			ArrayList<Product> products;
+			products = (ArrayList<Product>) readData.readObject();
+			s.getProducts().addAll(products);
+
+		} catch (IOException e) {
+			System.out.println("Error reading Product_Data " + e.getMessage());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			if (readData != null) {
+				try {
+					readData.close();
+				} catch (IOException e) {
+					System.out.println(e);
+				}
+			}
+		}
+		
+
+		readData = null;
+		try {
+			readData = new ObjectInputStream(new FileInputStream(discountsFile));
+			ArrayList<Discount> discounts = (ArrayList<Discount>) readData.readObject();
+			s.getDiscounts().addAll(discounts);
+
+		} catch (IOException e) {
+			System.out.println("Error reading Discount_Data " + e.getMessage());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			if (readData != null) {
+				try {
+					readData.close();
+				} catch (IOException e) {
+					System.out.println(e);
+				}
+			}
+		}
+
+		readData = null;
+		try {
+			readData = new ObjectInputStream(new FileInputStream(orderFile));
+			ArrayList<Order> orders = (ArrayList<Order>) readData.readObject();
+			s.getOrders().addAll(orders);
+
+		} catch (IOException e) {
+			System.out.println("Error reading Order_Data " + e.getMessage());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			if (readData != null) {
+				try {
+					readData.close();
+				} catch (IOException e) {
+					System.out.println(e);
+				}
+			}
+		}
+
+		readData = null;
+		try {
+			readData = new ObjectInputStream(new FileInputStream(shipmentFile));
+
+			ArrayList<Shipment> shipments = (ArrayList<Shipment>) readData.readObject();
+			s.getShipments().addAll(shipments);
+
+		} catch (IOException e) {
+			System.out.println("Error reading Shipment_Data " + e.getMessage());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			if (readData != null) {
+				try {
+					readData.close();
+				} catch (IOException e) {
+					System.out.println(e);
+				}
+			}
+		}
+
+	}
+
+	private static void addElectronics(WarehouseSystem s, String id, String name, double price, double w, int stock) {
+
+		Product electronicProduct = new ElectronicProduct(id, name, price, w, stock);
+		s.getProducts().add(electronicProduct);
+
+	}
+
+	private static void addBooks(WarehouseSystem s, String id, String name, double price, double w, int stock) {
+
+		Product bookProduct = new BookProduct(id, name, price, w, stock);
+		s.getProducts().add(bookProduct);
+	}
+
+	private static void addGrocery(WarehouseSystem s, String id, String name, double price, double w, int stock) {
+
+		Product groceryProduct = new GroceryProduct(id, name, price, w, stock);
+		s.getProducts().add(groceryProduct);
+
+	}
+}*/
