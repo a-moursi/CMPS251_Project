@@ -1,8 +1,12 @@
 package Data;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 import Discount.*;
 import main.*;
 import Orders.*;
+import PaymentSystem.CashPayment;
 import Products.*;
 import Shipment.*;
 
@@ -43,7 +47,7 @@ public class ReportService {
 			discount.detailsTail();
 		}
 
-		System.out.printf("[2] Active Dicounts:  \n"); // need to display day and full date
+		System.out.printf("[2] Active Dicounts  (today %s): \n",s.today()); // need to display day and full date
 
 		for (Discount discount : s.getDiscounts()) {
 			if (discount.isActive()) discount.ActiveDiscounts();
@@ -117,8 +121,11 @@ public class ReportService {
 			if (shipment.getStatus() != ShipmentStatus.DELIVERED) shipment.notDelivered();
 		}
 
-		System.out.println("[11] Simple Top 3 -Selling (counts): ");
 		
+		System.out.println("[11] Simple Top-Selling (counts): ");
+		
+	
+			
 		
 
 		System.out.println("[12] Total Revenue (QAR, all time): ");
@@ -127,24 +134,72 @@ public class ReportService {
 		for (Order order : s.getOrders()) {
 			totalRevenue += order.getTotal();
 		}
-		System.out.printf("Total: QAR %.2f", totalRevenue);
+		System.out.printf("Total: QAR %.2f \n", totalRevenue);
 
 		
 		
 		System.out.println("[13] Payments Summary (from Orders): ");
-//		double totalPayment = 0;
-//		for (Order order : s.getOrders()) {
-//			totalPayment += order.
-//		}
+		
+		double totalPayment = 0;
+		ArrayList<String> card = new ArrayList<>();
+		ArrayList<String> cash = new ArrayList<>();
+		String CashNames = cash.toString().replace("[", "").replace("]", "");
+		String CardNames = card.toString().replace("[", "").replace("]", "");
+		
+		for (Order order : s.getOrders()) {
+			
+			totalPayment += order.getTotal();
+			
+			if (order.getPayment() instanceof CashPayment)
+				
+				cash.add(order.getCustomer().getName()) ;
+			
+			else
+				card.add(order.getCustomer().getName());
+		
+		}
+		
+		System.out.printf("Total: QAR %.2f \n", totalPayment);
+		System.out.printf("(mix: card for %s; cash for %s) \n",CardNames,CashNames);
+		
 		
 
 		System.out.println("[14] Discount Usage: ");
 		
+		for (Order orders : s.getOrders()) {
+			
+			Discount d1 = orders.getAppliedDiscount();
+			String name = d1.getCode();
+			int times = 0;
+			double total = 0;
+			
+			for (Order order : s.getOrders()) {
+				
+				if (order.getAppliedDiscount() == d1) {
+					
+					total += order.getDiscountAmount();
+					times += 1;	}	
+				
+			}
+			
+			System.out.printf("- %s:   times %d, total discount QAR %.2f \n",name,times,total);
+			
+		}
+		
 		
 
-		System.out.println("[15] Active Discount Overlaps (today 2025-10-24): "); // Need date to be formatted
+		System.out.printf("[15] Active Discount Overlaps (today %s): \n",s.today()); // Need date to be formatted
+		
+		for (Discount discount : s.getDiscounts()) {
+			
+			if (discount.isActive() && discount.getStartDate().isAfter(s.today()) && discount.getEndDate().isBefore(s.today()))
+				
+				discount.ActiveDiscounts();
+			
+			}
 		
 
+		
 		System.out.println("=== End of Reports === ");
 
 	}

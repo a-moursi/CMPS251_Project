@@ -116,5 +116,13 @@ public class Order implements Serializable  {
 		
 		return this.appliedDiscount;
 	}
+	
+	/**
+	 * @return the payment
+	 */
+	public Payment getPayment() {
+		return payment;
+	}
 
+	
 }
