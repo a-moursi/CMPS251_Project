@@ -93,7 +93,7 @@ public class CustomerMenu {
 		} while (!(choice == 0));
 	}
 
-	private static void checkout(Scanner sc, WarehouseSystem sys, Customer currentC) {
+	private static void checkout(Scanner sc, WarehouseSystem sys, Customer customer) {
 		System.out.print("--- Shipping Address ---\nStreet : > ");
 		String street = sc.next();
 		System.out.print("City: > ");
@@ -102,10 +102,10 @@ public class CustomerMenu {
 		String country = sc.next();
 		Address address = new Address(street, city , country);
 		
-		double subtotal = currentC.shoppingcart.subtotal();
+		double subtotal = customer.shoppingcart.subtotal();
 		Discount activeD = sys.findApplicableDiscount(App.TODAY);
 		double discount = activeD.calculateDiscount(subtotal);
-		double totalWeight = currentC.shoppingcart.totalWeight();
+		double totalWeight = customer.shoppingcart.totalWeight();
 		double shippingfee = sys.getRateTable().shippingFeeFor(totalWeight);
 		double total = (subtotal-discount)+shippingfee;
 		
@@ -124,12 +124,11 @@ public class CustomerMenu {
 		case 2 -> payment = new CashPayment(App.currency, total);
 		}
 		
-		Order order = new Order(currentC, currentC.shoppingcart.toOrderItems(), subtotal, discount, shippingfee, total, activeD, payment);
-		Shipment shipment = new Shipment(order.getId(), currentC, address, totalWeight);
+		Order order = new Order(customer, customer.shoppingcart.toOrderItems(), subtotal, discount, shippingfee, total, activeD, payment);
+		Shipment shipment = new Shipment(order.getId(), customer, address, totalWeight);
 		
 		System.out.println("--- Checkout Summary ---\n--- Cart ---");
-		currentC.shoppingcart.print();
-		System.out.printf("Subtotal: %s %.2f\n", App.currency, subtotal);
+		customer.shoppingcart.print();
 		System.out.printf("%s : - %s %.2f\n", activeD.getDetails(), App.currency, discount);
 		System.out.printf("Shipping (%.2f kg): %s %.2f\n", totalWeight, App.currency, subtotal);
 		System.out.printf("TOTAL: %s %.2f\n", App.currency, total);

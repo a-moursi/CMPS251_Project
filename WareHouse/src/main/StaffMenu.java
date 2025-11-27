@@ -32,7 +32,7 @@ public class StaffMenu {
 			case 3 -> createDiscount(sc, sys);
 			case 4 -> addProduct(sc, sys);
 			case 5 -> updateShipment(sc, sys);
-			case 6 -> ReportService.runAllReports(sys); //waiting for the ReportService class
+			case 6 -> ReportService.runAllReports(sys); // waiting for the ReportService class
 			case 0 -> choice = 0;
 			default -> System.out.println("Invalid choice!, try again(Staff Menu)");
 			}
@@ -43,6 +43,12 @@ public class StaffMenu {
 		// get customer info and make a new customer and pass it (id and name)
 		System.out.print("Customer ID: > ");
 		String id = sc.next();
+		for(Customer c : sys.getCustomers()) {
+			if(c.getId().equals(id)) {
+				System.out.println("ID already exists");
+				return;
+			}
+		}
 		// check if the id is valid and that it doesn't already exist
 		System.out.print("Customer Name: > ");
 		String name = sc.next();
@@ -81,7 +87,7 @@ public class StaffMenu {
 		LocalDate end = LocalDate.parse(sc.next());
 		System.out.print("Create as Active? (y/n): > ");
 		boolean active = (sc.next().toLowerCase().equals("y")) ? true : false;
-		
+
 		// prints a different success message for each discount type
 		switch (choice) {
 		case 1 -> {

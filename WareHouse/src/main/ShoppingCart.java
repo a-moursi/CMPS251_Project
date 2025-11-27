@@ -69,11 +69,11 @@ public class ShoppingCart implements Serializable {
 	public void print() {
 		int i=0;
 		for (CartItem item : items) { // loop through the items ArrayList
-			System.out.printf("%d) Product: %s, Quantity: %d, Price: %.2f %s \n", i,  item.getProduct().getName(),
-					item.getQuantity(), item.getProduct().getPrice(), App.currency); // Display contents of ArrayList items
+			System.out.printf("%d) %s, x%d |  %s %.2f \n", i,  item.getProduct().getName(),
+					item.getQuantity(), App.currency, (item.getProduct().getPrice()*item.getQuantity())); // Display contents of ArrayList items
 			i++;
 		}
-		System.out.printf("Subtotal: %.2f %s", subtotal(), App.currency);
+		System.out.printf("Subtotal: %s %.2f \n", App.currency, subtotal());
 		
 
 	}
