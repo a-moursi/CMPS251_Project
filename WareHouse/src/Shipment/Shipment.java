@@ -9,7 +9,7 @@ public class Shipment implements Serializable {
 	private String orderId;
 	private Customer customer;
 	private Address address;
-	private ShipmentStatus status;
+	private ShipmentStatus status = ShipmentStatus.CREATED;
 	private double totalWeightKg;
 
 	public ShipmentStatus getStatus() {

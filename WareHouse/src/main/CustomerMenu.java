@@ -3,11 +3,12 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Discount.Discount;
 import Orders.Order;
 import PaymentSystem.*;
 import Products.Product;
 import Products.ProductListView;
-import Shipment.Address;
+import Shipment.*;
 
 //Name: Abdelrahman Moursi
 //ID: 202406103
@@ -102,7 +103,8 @@ public class CustomerMenu {
 		Address address = new Address(street, city , country);
 		
 		double subtotal = currentC.shoppingcart.subtotal();
-		double discount = sys.findApplicableDiscount(App.TODAY).calculateDiscount(subtotal);
+		Discount activeD = sys.findApplicableDiscount(App.TODAY);
+		double discount = activeD.calculateDiscount(subtotal);
 		double totalWeight = currentC.shoppingcart.totalWeight();
 		double shippingfee = sys.getRateTable().shippingFeeFor(totalWeight);
 		double total = (subtotal-discount)+shippingfee;
@@ -122,10 +124,18 @@ public class CustomerMenu {
 		case 2 -> payment = new CashPayment(App.currency, total);
 		}
 		
-		Order order = new Order(currentC, currentC.shoppingcart.toOrderItems(), subtotal, discount, shippingfee, total, sys.findApplicableDiscount(App.TODAY), payment);
+		Order order = new Order(currentC, currentC.shoppingcart.toOrderItems(), subtotal, discount, shippingfee, total, activeD, payment);
+		Shipment shipment = new Shipment(order.getId(), currentC, address, totalWeight);
 		
 		System.out.println("--- Checkout Summary ---\n--- Cart ---");
-		System.out.printf("");
+		currentC.shoppingcart.print();
+		System.out.printf("Subtotal: %s %.2f\n", App.currency, subtotal);
+		System.out.printf("%s : - %s %.2f\n", activeD.getDetails(), App.currency, discount);
+		System.out.printf("Shipping (%.2f kg): %s %.2f\n", totalWeight, App.currency, subtotal);
+		System.out.printf("TOTAL: %s %.2f\n", App.currency, total);
+		System.out.print(payment.summary());
+		System.out.printf("Order ID: %s\n", order.getId());
+		System.out.print(shipment.basicInfo());
 		
 	}
 }

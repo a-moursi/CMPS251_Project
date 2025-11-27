@@ -14,7 +14,7 @@ import Shipment.Shipment;
 //Date: 01-11-2025
 
 public class WarehouseSystem {
-	private LocalDate today = App.TODAY;
+	private LocalDate today;
 	private ArrayList<Customer> customers = new ArrayList<>();
 	private ArrayList<Product> products = new ArrayList<>();
 	private ArrayList<Discount> discounts = new ArrayList<>();

@@ -29,9 +29,8 @@ public class App {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to the WareHouse System!");
-		// -----------------------------------
-		// load the data from the files
-		SeedData.load(sys);
+		
+		SeedData.load(sys); // loading Data
 
 		// Show System MENU----------------------
 		int choice;

@@ -13,7 +13,7 @@ import main.Customer;
 // 11/05/2025
 public class Order implements Serializable  {
 	private String id;
-	private LocalDate date = App.TODAY;
+	private LocalDate date;
 	private double subtotal;
 	private double discountAmount;
 	private double shippingFee;
@@ -41,7 +41,7 @@ public class Order implements Serializable  {
 
 		this.id = OrderIdGenerator.nextId();
 		this.customer = customer;
-		this.date = LocalDate.now();
+		this.date = App.TODAY;
 		this.items = items;
 		this.subtotal = subtotal;
 		this.discountAmount = discountAmount;
