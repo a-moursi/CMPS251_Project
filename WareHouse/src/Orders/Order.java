@@ -6,13 +6,14 @@ import java.util.ArrayList;
 
 import Discount.Discount;
 import PaymentSystem.Payment;
+import main.App;
 import main.Customer;
 
 // Anas Ali Khan
 // 11/05/2025
 public class Order implements Serializable  {
 	private String id;
-	private LocalDate date = LocalDate.now();
+	private LocalDate date = App.TODAY;
 	private double subtotal;
 	private double discountAmount;
 	private double shippingFee;

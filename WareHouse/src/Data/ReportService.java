@@ -117,7 +117,7 @@ public class ReportService {
 			if (shipment.getStatus() != ShipmentStatus.DELIVERED) shipment.notDelivered();
 		}
 
-		System.out.println("[11] Simple Top-Selling (counts): ");
+		System.out.println("[11] Simple Top 3 -Selling (counts): ");
 		
 		
 

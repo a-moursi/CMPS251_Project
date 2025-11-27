@@ -14,13 +14,13 @@ import Shipment.Shipment;
 //Date: 01-11-2025
 
 public class WarehouseSystem {
-	private LocalDate today;
+	private LocalDate today = App.TODAY;
 	private ArrayList<Customer> customers = new ArrayList<>();
 	private ArrayList<Product> products = new ArrayList<>();
 	private ArrayList<Discount> discounts = new ArrayList<>();
 	private ArrayList<Order> orders = new ArrayList<>();
 	private ArrayList<Shipment> shipments = new ArrayList<>();
-															 //max weighs				//fees
+	// max weighs //fees
 	private RateTable rateTable = new RateTable(new double[] { 2, 5, 10 }, new double[] { 10, 20, 35, 50 });
 
 	// ------------------------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ public class WarehouseSystem {
 	// ------------------------------------------------------------------------------------------------
 
 	public LocalDate today() {
-		return null;
+		return today;
 	}
 
 	public void addCustomer(Customer c) {
@@ -90,9 +90,10 @@ public class WarehouseSystem {
 		deactivateOverlaps(target);
 	}
 
-	private void deactivateOverlaps(Discount newcomer) { // deactivates active discounts that overlap with the new discount
-		for(Discount d : discounts) {
-			if(Discount.overlaps(newcomer, d)) {
+	private void deactivateOverlaps(Discount newcomer) { // deactivates active discounts that overlap with the new
+															// discount
+		for (Discount d : discounts) {
+			if (Discount.overlaps(newcomer, d)) {
 				d.setActive(false);
 			}
 		}
@@ -121,6 +122,13 @@ public class WarehouseSystem {
 	}
 
 	public Discount findApplicableDiscount(LocalDate date) {
+		
+		for (Discount d : discounts) {
+			if (d.isActive() && (d.getStartDate().isEqual(today)
+					|| d.getStartDate().isBefore(today)) && d.getEndDate().isAfter(today)) {
+				return d;
+			}
+		}
 		return null;
 	}
 

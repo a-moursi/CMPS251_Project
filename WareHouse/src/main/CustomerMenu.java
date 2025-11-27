@@ -3,8 +3,11 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Orders.Order;
+import PaymentSystem.*;
 import Products.Product;
 import Products.ProductListView;
+import Shipment.Address;
 
 //Name: Abdelrahman Moursi
 //ID: 202406103
@@ -49,39 +52,80 @@ public class CustomerMenu {
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1 -> ProductListView.printCategorized(sys.getProducts());// DONE
-			case 2 -> {//checks if the quantity is available, and then subtract that qnty from
+			case 2 -> {// checks if the quantity is available, and then subtract that qnty from
 						// the stock, before adding item to cart
 				System.out.print("Enter Product ID: > ");
 				String pId = sc.next();
 				System.out.print("Quantity: > ");
 				int qnty = sc.nextInt();
 				Product added = sys.findProductById(pId);
-				if(added.getStock() >= qnty) {
-					added.setStock(added.getStock()-qnty);// subtract from the available stock
-					currentC.shoppingcart.addItem(sys.findProductById(pId), qnty);//add to cart 
-				}else {
+				if (added.getStock() >= qnty) {
+					added.setStock(added.getStock() - qnty);// subtract from the available stock
+					currentC.shoppingcart.addItem(sys.findProductById(pId), qnty);// add to cart
+				} else {
 					System.out.println("Stock is not enough!");
 				}
-				
+
 			} // DONE
-			case 3 -> {//adds the qnty from the cart back to the stock, before removing the item
+			case 3 -> {// adds the qnty from the cart back to the stock, before removing the item
 				currentC.shoppingcart.print();
 				System.out.print("Enter index: > ");
 				int index = sc.nextInt();
 				CartItem removedItem = currentC.shoppingcart.getItems().get(index);
 				Product removed = currentC.shoppingcart.getItems().get(index).getProduct();
-				
-				removed.setStock(removed.getStock()+removedItem.getQuantity());//adds the qnty back to stock
-				currentC.shoppingcart.removeIndex(index);//remove from cart 
+
+				removed.setStock(removed.getStock() + removedItem.getQuantity());// adds the qnty back to stock
+				currentC.shoppingcart.removeIndex(index);// remove from cart
 			}
-			case 4 -> currentC.shoppingcart.print();// DONE
-			case 5 -> {//checkout
-				System.out.println("Customer menu Option 5(WIP)");
+			case 4 -> {// DONE
+				if (currentC.shoppingcart.isEmpty())
+					System.out.println("Cart is Empty!");
+				else
+					currentC.shoppingcart.print();
+
 			}
+			case 5 -> checkout(sc, sys, currentC);// checkout
+			
 			case 0 -> choice = 0;
 			default -> System.out.println("Invalid choice!, try again (Customer Menu)");
 			}
 		} while (!(choice == 0));
 	}
 
+	private static void checkout(Scanner sc, WarehouseSystem sys, Customer currentC) {
+		System.out.print("--- Shipping Address ---\nStreet : > ");
+		String street = sc.next();
+		System.out.print("City: > ");
+		String city = sc.next();
+		System.out.print("Country: > ");
+		String country = sc.next();
+		Address address = new Address(street, city , country);
+		
+		double subtotal = currentC.shoppingcart.subtotal();
+		double discount = sys.findApplicableDiscount(App.TODAY).calculateDiscount(subtotal);
+		double totalWeight = currentC.shoppingcart.totalWeight();
+		double shippingfee = sys.getRateTable().shippingFeeFor(totalWeight);
+		double total = (subtotal-discount)+shippingfee;
+		
+		System.out.print("Payment method: 1) Card 2) Cash\n> ");
+		int choice = sc.nextInt();
+		
+		Payment payment = null;
+		switch (choice) {
+		case 1 -> { 
+			System.out.print("Card Holder Name: >");
+			String cName = sc.next();
+			System.out.print("Card Number (masked ok): >");
+			String cNo = sc.next();
+			payment = new CardPayment(App.currency,total, cName, cNo);
+		}
+		case 2 -> payment = new CashPayment(App.currency, total);
+		}
+		
+		Order order = new Order(currentC, currentC.shoppingcart.toOrderItems(), subtotal, discount, shippingfee, total, sys.findApplicableDiscount(App.TODAY), payment);
+		
+		System.out.println("--- Checkout Summary ---\n--- Cart ---");
+		System.out.printf("");
+		
+	}
 }

@@ -1,6 +1,7 @@
 package Data;
 
 import java.io.IOException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.*;
@@ -13,20 +14,30 @@ import Products.*;
 
 public class SeedData {
 	public static void load(WarehouseSystem s) {
-
+		
+		File CFile = new File("Customer_Data.dat");
+		File DFile = new File("Discount_Data.dat");
+		File OFile = new File("Order_Data.dat");
+		File ShFile = new File("Shipment_Data.dat");
+		
+		CFile = (CFile.exists()) ? new File("Customer_Data.dat") :  new File("Customer_Seed.dat");
+		DFile = (DFile.exists()) ? new File("Discount_Data.dat") : new File("Discount_Seed.dat");
+		OFile = (OFile.exists()) ? new File("Order_Data.dat") :  new File("Order_Seed.dat");
+		ShFile = (ShFile.exists()) ? new File("Shipment_Data.dat") :  new File("Shipment_Seed.dat");
+		
 		System.out.println("=== Starting up the system ===");
 
 		// data-------------------------------------------------------------------------------------------------
 		System.out.print("Loading Data ");
 		ObjectInputStream readData = null; // load customers
 		try {
-			readData = new ObjectInputStream(new FileInputStream("Customer_Data.dat"));
+			readData = new ObjectInputStream(new FileInputStream(CFile));
 			ArrayList<Customer> customer;
 			customer = (ArrayList<Customer>) readData.readObject();
 			s.getCustomers().addAll(customer);
 
 		} catch (IOException e) {
-			System.out.println("Error reading Customer_Data" + e.getMessage());
+			System.out.println("Error reading Customer_Data " + e.getMessage());
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
@@ -41,12 +52,12 @@ public class SeedData {
 
 		readData = null;
 		try {
-			readData = new ObjectInputStream(new FileInputStream("Discount_Data.dat"));
+			readData = new ObjectInputStream(new FileInputStream(DFile));
 			ArrayList<Discount> discounts = (ArrayList<Discount>) readData.readObject();
 			s.getDiscounts().addAll(discounts);
 
 		} catch (IOException e) {
-			System.out.println("Error reading Order_Data" + e.getMessage());
+			System.out.println("Error reading Discount_Data " + e.getMessage());
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
@@ -61,12 +72,12 @@ public class SeedData {
 
 		readData = null;
 		try {
-			readData = new ObjectInputStream(new FileInputStream("Order_Data.dat"));
+			readData = new ObjectInputStream(new FileInputStream(OFile));
 			ArrayList<Order> orders = (ArrayList<Order>) readData.readObject();
 			s.getOrders().addAll(orders);
 
 		} catch (IOException e) {
-			System.out.println("Error reading Order_Data" + e.getMessage());
+			System.out.println("Error reading Order_Data " + e.getMessage());
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
@@ -81,13 +92,13 @@ public class SeedData {
 
 		readData = null;
 		try {
-			readData = new ObjectInputStream(new FileInputStream("Shipment_Data.dat"));
+			readData = new ObjectInputStream(new FileInputStream(ShFile));
 
 			ArrayList<Shipment> shipments = (ArrayList<Shipment>) readData.readObject();
 			s.getShipments().addAll(shipments);
 
 		} catch (IOException e) {
-			System.out.println("Error reading Shipment_Data" + e.getMessage());
+			System.out.println("Error reading Shipment_Data " + e.getMessage());
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
