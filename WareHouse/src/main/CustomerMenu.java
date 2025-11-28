@@ -126,6 +126,9 @@ public class CustomerMenu {
 		
 		Order order = new Order(customer, customer.shoppingcart.toOrderItems(), subtotal, discount, shippingfee, total, activeD, payment);
 		Shipment shipment = new Shipment(order.getId(), customer, address, totalWeight);
+		sys.getOrders().add(order);
+		sys.getShipments().add(shipment);
+		
 		
 		System.out.println("--- Checkout Summary ---\n--- Cart ---");
 		customer.shoppingcart.print();
@@ -135,6 +138,6 @@ public class CustomerMenu {
 		System.out.print(payment.summary());
 		System.out.printf("Order ID: %s\n", order.getId());
 		System.out.print(shipment.basicInfo());
-		
+		customer.shoppingcart.clear();
 	}
 }
