@@ -95,7 +95,8 @@ public class CustomerMenu {
 
 	private static void checkout(Scanner sc, WarehouseSystem sys, Customer customer) {
 		System.out.print("--- Shipping Address ---\nStreet : > ");
-		String street = sc.next();
+		sc.nextLine();
+		String street = sc.nextLine();
 		System.out.print("City: > ");
 		String city = sc.next();
 		System.out.print("Country: > ");
