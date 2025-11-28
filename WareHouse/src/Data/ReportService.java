@@ -13,16 +13,19 @@ import Shipment.*;
 public class ReportService {
 
 	public static void runAllReports(WarehouseSystem sys, Scanner sc) {
-
-		System.out.print("=====Reports Menu=====" + "1) All Discounts \r\n" + "2) Active Discounts (today) \r\n"
+		
+		int choice=0;
+		do {
+		System.out.print("\n=====Reports Menu=====\r\n" + "1) All Discounts \r\n" + "2) Active Discounts (today) \r\n"
 				+ "3) Products by Category \r\n" + "4) Low Stock (≤ threshold) \r\n" + "5) Out of Stock \r\n"
 				+ "6) Inventory Valuation (QAR) \r\n" + "7) Orders Today (YYYY-MM-DD) \r\n"
 				+ "8) Sales by Customer (QAR) \r\n" + "9) Shipments by Status \r\n"
 				+ "10) Shipments are not yet DELIVERED \r\n" + "11) Simple Top-Selling (counts) \r\n"
 				+ "12) Total Revenue (QAR, all time) \r\n" + "13) Payments Summary (from Orders) \r\n"
-				+ "14) Discount Usage \r\n" + "15) Active Discount Overlaps (today) \r\n" + "Choice : > ");
+				+ "14) Discount Usage \r\n" + "15) Active Discount Overlaps (today) \r\n" + "0) Exit \r\n"
+						+ "Choice : > ");
 
-		int choice = sc.nextInt();
+		choice = sc.nextInt();
 		switch (choice) {
 		case 1 -> {
 			System.out.printf("[1] All Discounts: \n");
@@ -171,9 +174,10 @@ public class ReportService {
 			}
 			System.out.println("=== End of Reports === ");
 		}
+		case 0 -> choice=0;
 
 		default -> System.out.println("Invalid choice");
-		}
+		}}while(choice!=0);
 
 	}
 
