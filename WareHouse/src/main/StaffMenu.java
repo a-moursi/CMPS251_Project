@@ -32,7 +32,7 @@ public class StaffMenu {
 			case 3 -> createDiscount(sc, sys);
 			case 4 -> addProduct(sc, sys);
 			case 5 -> updateShipment(sc, sys);
-			case 6 -> ReportService.runAllReports(sys); // waiting for the ReportService class
+			case 6 -> ReportService.runAllReports(sys, sc); // waiting for the ReportService class
 			case 0 -> choice = 0;
 			default -> System.out.println("Invalid choice!, try again(Staff Menu)");
 			}
