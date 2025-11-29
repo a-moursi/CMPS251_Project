@@ -67,7 +67,7 @@ public class ReportService {
 			for (Product product : sys.getProducts()) {
 				sum += product.getPrice() * product.getStock();
 			}
-			System.out.println("Total: QAR" + sum);
+			System.out.println("Total: QAR " + sum);
 		}
 		case 7 -> {
 			System.out.println("[7] Orders Today (2025-10-24): "); // Need to work on displaying the date

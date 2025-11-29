@@ -58,26 +58,35 @@ public class App {
 		System.out.print("Saving Data... ");
 		ObjectOutputStream out = null;
 		try {
+			if (!sys.getCustomers().isEmpty()) {
+				out = new ObjectOutputStream(new FileOutputStream("Customer_Data.dat"));
+				out.writeObject(sys.getCustomers());
+				out.close();
+			}
 
-			out = new ObjectOutputStream(new FileOutputStream("Customer_Data.dat"));
-			out.writeObject(sys.getCustomers());
-			out.close();
+			if (!sys.getProducts().isEmpty()) {
+				out = new ObjectOutputStream(new FileOutputStream("Product_Data.dat"));
+				out.writeObject(sys.getProducts());
+				out.close();
+			}
 
-			out = new ObjectOutputStream(new FileOutputStream("Discount_Data.dat"));
-			out.writeObject(sys.getDiscounts());
-			out.close();
+			if (!sys.getDiscounts().isEmpty()) {
+				out = new ObjectOutputStream(new FileOutputStream("Discount_Data.dat"));
+				out.writeObject(sys.getDiscounts());
+				out.close();
+			}
 
-			out = new ObjectOutputStream(new FileOutputStream("Order_Data.dat"));
-			out.writeObject(sys.getOrders());
-			out.close();
+			if (!sys.getOrders().isEmpty()) {
+				out = new ObjectOutputStream(new FileOutputStream("Order_Data.dat"));
+				out.writeObject(sys.getOrders());
+				out.close();
+			}
 
-			out = new ObjectOutputStream(new FileOutputStream("Shipment_Data.dat"));
-			out.writeObject(sys.getShipments());
-			out.close();
-
-			out = new ObjectOutputStream(new FileOutputStream("Product_Data.dat"));
-			out.writeObject(sys.getProducts());
-			out.close();
+			if (!sys.getShipments().isEmpty()) {
+				out = new ObjectOutputStream(new FileOutputStream("Shipment_Data.dat"));
+				out.writeObject(sys.getShipments());
+				out.close();
+			}
 
 		} catch (IOException ioe) {
 
