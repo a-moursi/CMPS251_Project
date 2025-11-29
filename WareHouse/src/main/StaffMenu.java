@@ -17,7 +17,7 @@ public class StaffMenu {
 
 		final String STAFFMENU = "\n--- Staff Menu --\r\n" + "1) Add Customer (ID + Name) \r\n"
 				+ "2) List/Toggle Discounts \r\n" + "3) Create Discount\r\n" + "4) Add Product \r\n"
-				+ "5) Update Shipment Status \r\n" + "6) Reports (~15)\r\n" + "0) Back \r\n\n" + "Choice > ";
+				+ "5) Update Shipment Status \r\n" + "6) Reports (~15)\r\n" + "0) Back \r\n\n" + "Choice > \n";
 		// ----------
 
 		int choice;
@@ -154,14 +154,14 @@ public class StaffMenu {
 		}
 
 		// user chooses the shipment intended to be updated
-		System.out.print("Choose shipment index: > ");
+		System.out.print("Choose shipment index: > \n");
 		int index = sc.nextInt();
 
 		// updates the status
 		int status = 0;
 		do {
 			System.out.print("Status:\n" + "0) CREATED\n" + "1) PACKED\n" + "2) IN_TRANSIT\n" + "3) OUT_FOR_DELIVERY\n"
-					+ "4) DELIVERED\n" + "New status index: > ");
+					+ "4) DELIVERED\n" + "\nNew status index: > ");
 			status = sc.nextInt();
 
 			switch (status) {
@@ -177,7 +177,7 @@ public class StaffMenu {
 			}
 		} while (status == 5);
 
-		System.out.println(sys.getShipments().get(index).allShipments());
+		System.out.printf("\nUpdated: %s\n",sys.getShipments().get(index).allShipments());
 	}
 
 }
