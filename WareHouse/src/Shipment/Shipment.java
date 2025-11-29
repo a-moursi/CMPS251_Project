@@ -9,7 +9,7 @@ public class Shipment implements Serializable {
 	private String orderId;
 	private Customer customer;
 	private Address address;
-	private ShipmentStatus status = ShipmentStatus.CREATED;
+	private ShipmentStatus status;
 	private double totalWeightKg;
 
 	public ShipmentStatus getStatus() {
@@ -24,6 +24,7 @@ public class Shipment implements Serializable {
 		super();
 		this.orderId = orderId;
 		this.customer = customer;
+		this.status  = ShipmentStatus.CREATED;
 		this.address = address;
 		this.totalWeightKg = totalWeightKg;
 	}

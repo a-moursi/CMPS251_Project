@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 import main.App;
 
+
 public class ProductListView {
 	public static void printCategorized(ArrayList<Product> products) {
 		ArrayList<Product> sortedList = new ArrayList<>();
 
 
-		
-		
 		for (Product p : products) {
 
 			if (p instanceof ElectronicProduct) {
