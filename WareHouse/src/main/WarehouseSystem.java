@@ -11,7 +11,6 @@ import Shipment.Shipment;
 
 //Name: Abdelrahman Moursi
 //ID: 202406103
-//Date: 01-11-2025
 
 public class WarehouseSystem {
 	private LocalDate today;

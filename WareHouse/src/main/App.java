@@ -10,7 +10,6 @@ import Data.SeedData;
 
 //Name: Abdelrahman Moursi
 //ID: 202406103
-//Date: 01-11-2025
 
 public class App {
 	public static final LocalDate TODAY = LocalDate.of(2025, 10, 24);
@@ -28,7 +27,6 @@ public class App {
 	// ============================================================================================================
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to the WareHouse System!");
 
 		SeedData.load(sys); // loading Data
 
@@ -57,7 +55,7 @@ public class App {
 
 		// Save
 		// data-------------------------------------------------------------------------------------------------
-		System.out.print("Saving Data ");
+		System.out.print("Saving Data... ");
 		ObjectOutputStream out = null;
 		try {
 

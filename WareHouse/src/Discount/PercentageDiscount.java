@@ -2,6 +2,10 @@ package Discount;
 
 import java.time.LocalDate;
 
+//Name: Salih Alhaj
+//ID: 202405408
+//Date: 07-11-2025
+
 public class PercentageDiscount extends Discount {
 
 	private double percent;

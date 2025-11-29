@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 //Name: Abdelrahman Moursi
 //ID: 202406103
-//Date: 01-11-2025
 
 public class Customer implements Serializable  {
 	private String id;

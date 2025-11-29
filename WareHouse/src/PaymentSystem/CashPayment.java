@@ -30,9 +30,7 @@ public class CashPayment implements Payment {
 
 	@Override
 	public String summary() { 
-		// TODO Auto-generated method stub
-		return String.format("Amount paid:  %s: %.2f", this.currency,this.amount);
-		
+		return String.format("Cash %s %.2f  ",this.currency,this.amount);	
 	}
 
 }
