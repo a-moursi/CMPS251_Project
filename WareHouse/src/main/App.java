@@ -63,7 +63,6 @@ public class App {
 				out.writeObject(sys.getCustomers());
 				out.close();
 			}
-
 			if (!sys.getProducts().isEmpty()) {
 				out = new ObjectOutputStream(new FileOutputStream("Product_Data.dat"));
 				out.writeObject(sys.getProducts());
