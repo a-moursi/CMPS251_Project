@@ -86,7 +86,7 @@ public class CustomerMenu {
 
 			}
 			case 5 -> checkout(sc, sys, currentC);// checkout
-			
+
 			case 0 -> choice = 0;
 			default -> System.out.println("Invalid choice!, try again (Customer Menu)");
 			}
@@ -101,42 +101,45 @@ public class CustomerMenu {
 		String city = sc.next();
 		System.out.print("Country: > ");
 		String country = sc.next();
-		Address address = new Address(street, city , country);
-		
+		Address address = new Address(street, city, country);
+
 		double subtotal = customer.shoppingcart.subtotal();
 		Discount activeD = sys.findApplicableDiscount(App.TODAY);
 		double discount = 0;
-		if(!(activeD == null)) {
+		if (!(activeD == null))
 			activeD.calculateDiscount(subtotal);
-		}
+
 		double totalWeight = customer.shoppingcart.totalWeight();
 		double shippingfee = sys.getRateTable().shippingFeeFor(totalWeight);
-		double total = (subtotal-discount)+shippingfee;
-		
+		double total = (subtotal - discount) + shippingfee;
+
 		System.out.print("Payment method: 1) Card 2) Cash\n> ");
 		int choice = sc.nextInt();
-		
+
 		Payment payment = null;
 		switch (choice) {
-		case 1 -> { 
+		case 1 -> {
 			System.out.print("Card Holder Name: >");
 			String cName = sc.next();
 			System.out.print("Card Number (masked ok): >");
 			String cNo = sc.next();
-			payment = new CardPayment(App.currency,total, cName, cNo);
+			payment = new CardPayment(App.currency, total, cName, cNo);
 		}
 		case 2 -> payment = new CashPayment(App.currency, total);
 		}
-		
-		Order order = new Order(customer, customer.shoppingcart.toOrderItems(), subtotal, discount, shippingfee, total, activeD, payment);
+
+		Order order = new Order(customer, customer.shoppingcart.toOrderItems(), subtotal, discount, shippingfee, total,
+				activeD, payment);
 		Shipment shipment = new Shipment(order.getId(), customer, address, totalWeight);
 		sys.getOrders().add(order);
 		sys.getShipments().add(shipment);
-		
-		
+
 		System.out.println("--- Checkout Summary ---\n--- Cart ---");
 		customer.shoppingcart.print();
-		System.out.printf("%s : - %s %.2f\n", activeD.getDetails(), App.currency, discount);
+		if (!(activeD == null))
+			System.out.printf("%s : - %s %.2f\n", activeD.getDetails(), App.currency, discount);
+		else
+			System.out.println("No active Discounts");
 		System.out.printf("Shipping (%.2f kg): %s %.2f\n", totalWeight, App.currency, subtotal);
 		System.out.printf("TOTAL: %s %.2f\n", App.currency, total);
 		System.out.print(payment.summary());
