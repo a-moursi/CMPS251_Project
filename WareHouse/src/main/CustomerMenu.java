@@ -105,7 +105,10 @@ public class CustomerMenu {
 		
 		double subtotal = customer.shoppingcart.subtotal();
 		Discount activeD = sys.findApplicableDiscount(App.TODAY);
-		double discount = activeD.calculateDiscount(subtotal);
+		double discount = 0;
+		if(!(activeD == null)) {
+			activeD.calculateDiscount(subtotal);
+		}
 		double totalWeight = customer.shoppingcart.totalWeight();
 		double shippingfee = sys.getRateTable().shippingFeeFor(totalWeight);
 		double total = (subtotal-discount)+shippingfee;
