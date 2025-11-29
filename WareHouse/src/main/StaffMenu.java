@@ -17,14 +17,14 @@ public class StaffMenu {
 
 		final String STAFFMENU = "\n--- Staff Menu --\r\n" + "1) Add Customer (ID + Name) \r\n"
 				+ "2) List/Toggle Discounts \r\n" + "3) Create Discount\r\n" + "4) Add Product \r\n"
-				+ "5) Update Shipment Status \r\n" + "6) Reports (~15)\r\n" + "0) Back \r\n\n" + "Choice > \n";
+				+ "5) Update Shipment Status \r\n" + "6) Reports (~15)\r\n" + "0) Back \r\n\n" + "Choice > ";
 		// ----------
 
 		int choice;
 		do {
 			System.out.print(STAFFMENU);
 			choice = sc.nextInt();// do try catch for invalid input
-
+			System.out.println();
 			switch (choice) {
 			case 1 -> addCustomer(sc, sys);
 			case 2 -> listToggleDiscounts(sc, sys);
@@ -153,9 +153,9 @@ public class StaffMenu {
 		}
 
 		// user chooses the shipment intended to be updated
-		System.out.print("Choose shipment index: > \n");
+		System.out.print("Choose shipment index: > ");
 		int index = sc.nextInt();
-
+		System.out.println();
 		// updates the status
 		int status = 0;
 		do {

@@ -23,9 +23,10 @@ public class ReportService {
 				+ "10) Shipments are not yet DELIVERED \r\n" + "11) Simple Top-Selling (counts) \r\n"
 				+ "12) Total Revenue (QAR, all time) \r\n" + "13) Payments Summary (from Orders) \r\n"
 				+ "14) Discount Usage \r\n" + "15) Active Discount Overlaps (today) \r\n" + "0) Exit \r\n"
-						+ "\nChoice : > \n");
+						+ "\nChoice : > ");
 
 		choice = sc.nextInt();
+		System.out.println();
 		switch (choice) {
 		case 1 -> {
 			System.out.printf("[1] All Discounts: \n");
