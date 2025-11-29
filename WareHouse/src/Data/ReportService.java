@@ -30,13 +30,13 @@ public class ReportService {
 		case 1 -> {
 			System.out.printf("[1] All Discounts: \n");
 			for (Discount discount : sys.getDiscounts())
-				discount.detailsTail();
+				System.out.println(discount.detailsTail());
 		}
 		case 2 -> {
 			System.out.printf("[2] Active Dicounts  (today %s): \n", sys.today()); // need to display day and full date
 			for (Discount discount : sys.getDiscounts())
 				if (discount.isActive())
-					discount.ActiveDiscounts();
+					System.out.println(discount.ActiveDiscounts());
 		}
 		case 3 -> {
 			System.out.printf("[3] Products by Category:\r\n");

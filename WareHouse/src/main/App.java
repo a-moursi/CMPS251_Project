@@ -40,7 +40,7 @@ public class App {
 			switch (choice) {
 			case 1 -> StaffMenu.run(sc, sys);
 			case 2 -> {
-				if (sys.getCustomers().size() == 0)
+				if (sys.getCustomers().isEmpty())
 					System.out.println("No customers in the system");
 				else
 					CustomerMenu.run(sc, sys);
