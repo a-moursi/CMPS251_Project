@@ -135,14 +135,6 @@ public class CustomerMenu {
 		Shipment shipment = new Shipment(order.getId(), customer, address, totalWeight);
 		sys.getOrders().add(order);
 		sys.getShipments().add(shipment);
-		
-		for (OrderItem item : order.getItems()) {
-			Product p = sys.findProductById(item.getProduct().getId());
-			
-			p.setStock(p.getStock()-item.getQuantity());
-			
-			
-		}
 
 		System.out.println("\n--- Checkout Summary ---\n--- Cart ---");
 		customer.shoppingcart.print();
