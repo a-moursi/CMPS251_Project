@@ -93,11 +93,13 @@ public class StaffMenu {
 			System.out.print("Amount (e.g., 10 for 10 QAR): > ");
 			double amount = sc.nextDouble();
 			sys.addDiscount(new FixedAmountDiscount(code, start, end, active, amount));
+			System.out.println("Discount created. Overlap rule applied if Active.");
 		}
 		case 2 -> {
 			System.out.print("Percent (e.g., 10 for 10%): > ");
 			double percent = sc.nextDouble();
 			sys.addDiscount(new PercentageDiscount(code, start, end, active, percent));
+			System.out.println("Discount created. Overlap rule applied if Active.");
 		}
 		default -> {
 			System.out.println("Invalid Discount type\n");
