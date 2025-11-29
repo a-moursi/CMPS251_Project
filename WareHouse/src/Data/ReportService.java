@@ -23,7 +23,7 @@ public class ReportService {
 				+ "10) Shipments are not yet DELIVERED \r\n" + "11) Simple Top-Selling (counts) \r\n"
 				+ "12) Total Revenue (QAR, all time) \r\n" + "13) Payments Summary (from Orders) \r\n"
 				+ "14) Discount Usage \r\n" + "15) Active Discount Overlaps (today) \r\n" + "0) Exit \r\n"
-						+ "Choice : > ");
+						+ "\nChoice : > \n");
 
 		choice = sc.nextInt();
 		switch (choice) {
@@ -89,7 +89,7 @@ public class ReportService {
 
 				}
 
-				System.out.printf("- %s:  |  QAR  %.2f", padName(customer.getName()), customerTotal);
+				System.out.printf("- %s   QAR  %.2f \n", padName(customer.getName()), customerTotal);
 
 			}
 
@@ -138,42 +138,64 @@ public class ReportService {
 			double totalPayment = 0;
 			ArrayList<String> card = new ArrayList<>();
 			ArrayList<String> cash = new ArrayList<>();
-			String CashNames = cash.toString().replace("[", "").replace("]", "");
-			String CardNames = card.toString().replace("[", "").replace("]", "");
+			
 			for (Order order : sys.getOrders()) {
 				totalPayment += order.getTotal();
 				if (order.getPayment() instanceof CashPayment)
+					if (!cash.contains(order.getCustomer().getName()))
 					cash.add(order.getCustomer().getName());
-				else
-					card.add(order.getCustomer().getName());
+				else {
+					if (!card.contains(order.getCustomer().getName()))
+					card.add(order.getCustomer().getName()); }
 			}
+			
+			String CashNames = cash.toString().replace("[", "").replace("]", "");
+			String CardNames = card.toString().replace("[", "").replace("]", "");
 			System.out.printf("Total: QAR %.2f \n", totalPayment);
-			System.out.printf("(mix: card for %s; cash for %s) \n", CardNames, CashNames);
+			if (CashNames == null)
+				System.out.printf("(Card for %s) \n", CardNames);
+				
+			else if (CardNames == null) 
+				System.out.printf("(Cash for %s) \n", CashNames);
+			
+			else	
+				System.out.printf("(mix: card for %s; cash for %s) \n", CardNames, CashNames);
 		}
 		case 14 -> {
 			System.out.println("[14] Discount Usage: ");
+			
+			ArrayList<Discount> usedD = new ArrayList<>();
+			
 			for (Order orders : sys.getOrders()) {
 				Discount d1 = orders.getAppliedDiscount();
 				String name = d1.getCode();
 				int times = 0;
 				double total = 0;
+				
+				
 				for (Order order : sys.getOrders()) {
 					if (order.getAppliedDiscount() == d1) {
 						total += order.getDiscountAmount();
 						times += 1;
 					}
 				}
+				
+				if (!usedD.contains(d1)) {
 				System.out.printf("- %s:   times %d, total discount QAR %.2f \n", name, times, total);
+				usedD.add(d1);
+				}
 			}
 		}
+		
 		case 15 -> {
 			System.out.printf("[15] Active Discount Overlaps (today %s): \n", sys.today()); // Need date to be formatted
 			for (Discount discount : sys.getDiscounts()) {
-				if (discount.isActive() && discount.getStartDate().isAfter(sys.today())
-						&& discount.getEndDate().isBefore(sys.today()))
-					discount.ActiveDiscounts();
+				if (discount.isActive() && discount.getStartDate().isBefore(sys.today())
+						&& discount.getEndDate().isAfter(sys.today()))
+					
+					System.out.println(discount.ActiveDiscounts());
 			}
-			System.out.println("=== End of Reports === ");
+			System.out.println("\n=== End of Reports === ");
 		}
 		case 0 -> choice=0;
 
