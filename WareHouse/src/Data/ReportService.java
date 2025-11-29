@@ -74,7 +74,7 @@ public class ReportService {
 			System.out.println("[7] Orders Today (2025-10-24): "); // Need to work on displaying the date
 			for (Order order : sys.getOrders()) {
 				if (order.getDate().equals(sys.today())) {
-					System.out.printf("- %s |  %s  |  QAR  %.2f", order.getId(), padName(order.getCustomer().getName()),
+					System.out.printf("- %s |  %s  |  QAR  %.2f\n", order.getId(), padName(order.getCustomer().getName()),
 							order.getTotal());
 				}
 			}
@@ -153,10 +153,10 @@ public class ReportService {
 			String CashNames = cash.toString().replace("[", "").replace("]", "");
 			String CardNames = card.toString().replace("[", "").replace("]", "");
 			System.out.printf("Total: QAR %.2f \n", totalPayment);
-			if (CashNames == null)
+			if (cash.size() == 0)
 				System.out.printf("(Card for %s) \n", CardNames);
 				
-			else if (CardNames == null) 
+			else if (card.size() == 0) 
 				System.out.printf("(Cash for %s) \n", CashNames);
 			
 			else	
@@ -190,12 +190,10 @@ public class ReportService {
 		
 		case 15 -> {
 			System.out.printf("[15] Active Discount Overlaps (today %s): \n", sys.today()); // Need date to be formatted
-			for (Discount discount : sys.getDiscounts()) {
-				if (discount.isActive() && discount.getStartDate().isBefore(sys.today())
-						&& discount.getEndDate().isAfter(sys.today()))
-					
+			for (Discount discount : sys.getDiscounts())
+				if (discount.isActive())
 					System.out.println(discount.ActiveDiscounts());
-			}
+			
 			System.out.println("\n=== End of Reports === ");
 		}
 		case 0 -> choice=0;
