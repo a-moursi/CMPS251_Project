@@ -1,5 +1,10 @@
 package Shipment;
 
+
+//Name: Salih Alhaj
+//ID: 202405408
+//Date: 11-11-2025
+
 public class RateTable {
 
 	private double[] maxWeights;

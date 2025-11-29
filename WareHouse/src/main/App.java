@@ -28,7 +28,6 @@ public class App {
 	// ============================================================================================================
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to the WareHouse System!");
 
 		SeedData.load(sys); // loading Data
 
@@ -57,7 +56,7 @@ public class App {
 
 		// Save
 		// data-------------------------------------------------------------------------------------------------
-		System.out.print("Saving Data ");
+		System.out.print("Saving Data... ");
 		ObjectOutputStream out = null;
 		try {
 

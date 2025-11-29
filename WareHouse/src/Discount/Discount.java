@@ -3,6 +3,10 @@ package Discount;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+//Name: Salih Alhaj
+//ID: 202405408
+//Date: 01-11-2025
+
 public abstract class Discount implements Serializable {
 
 	private String code;

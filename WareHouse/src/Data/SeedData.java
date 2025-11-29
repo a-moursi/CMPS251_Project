@@ -31,10 +31,10 @@ public class SeedData {
 
 		
 		
-		System.out.println("=== Starting up the system ===");
+		
 
 		// data-------------------------------------------------------------------------------------------------
-		System.out.println("Loading Data");
+		
 		ObjectInputStream readData = null; // load customers
 		try {
 			readData = new ObjectInputStream(new FileInputStream(customerFile));
