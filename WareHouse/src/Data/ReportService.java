@@ -97,14 +97,14 @@ public class ReportService {
 		case 9 -> {
 			System.out.println("[9] Shipments by Status: ");
 			for (Shipment shipment : sys.getShipments()) {
-				shipment.allShipments();
+				System.out.println(shipment.allShipments());
 			}
 		}
 		case 10 -> {
 			System.out.println("[10] Shipments not yet DELIVERED: ");
 			for (Shipment shipment : sys.getShipments()) {
 				if (shipment.getStatus() != ShipmentStatus.DELIVERED)
-					shipment.notDelivered();
+					System.out.println(shipment.notDelivered());
 			}
 		}
 		case 11 -> {
@@ -124,6 +124,7 @@ public class ReportService {
 				}
 			}
 		}
+		
 		case 12 -> {
 			System.out.println("[12] Total Revenue (QAR, all time): ");
 			double totalRevenue = 0;
@@ -186,7 +187,7 @@ public class ReportService {
 		return String.format("%-15s", n);
 	}
 
-	// helper method for this option
+	// helper method for getting top sales
 	public static int getSalesCount(Product p, WarehouseSystem s) {
 		int count = 0;
 		for (Order order : s.getOrders()) { // checking orders because it stores all the final orders
