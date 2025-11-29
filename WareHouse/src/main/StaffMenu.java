@@ -113,6 +113,7 @@ public class StaffMenu {
 		// prints the menu and saves the needed data in variables
 		System.out.print("Category: 1) Book 2) Electronic 3) Grocery\n> ");
 		int choice = sc.nextInt();
+		sc.nextLine();
 		System.out.print("ID: > ");
 		String id = sc.nextLine();
 		System.out.print("Name: > ");
