@@ -12,7 +12,6 @@ import Shipment.*;
 
 //Name: Abdelrahman Moursi
 //ID: 202406103
-//01-11-2025
 
 public class CustomerMenu {
 
@@ -107,21 +106,23 @@ public class CustomerMenu {
 		Discount activeD = sys.findApplicableDiscount(App.TODAY);
 		double discount = 0;
 		if (!(activeD == null))
-			activeD.calculateDiscount(subtotal);
+			discount = activeD.calculateDiscount(subtotal);
 
 		double totalWeight = customer.shoppingcart.totalWeight();
 		double shippingfee = sys.getRateTable().shippingFeeFor(totalWeight);
-		double total = (subtotal - discount) + shippingfee;
-
+		double total = 0;
+		if (discount > subtotal)
+			discount = subtotal;
+		total = (subtotal-discount)+shippingfee;
 		System.out.print("Payment method: 1) Card 2) Cash\n> ");
 		int choice = sc.nextInt();
 
 		Payment payment = null;
 		switch (choice) {
 		case 1 -> {
-			System.out.print("Card Holder Name: >");
+			System.out.print("Card Holder Name: > ");
 			String cName = sc.next();
-			System.out.print("Card Number (masked ok): >");
+			System.out.print("Card Number (masked ok): > ");
 			String cNo = sc.next();
 			payment = new CardPayment(App.currency, total, cName, cNo);
 		}
@@ -134,17 +135,16 @@ public class CustomerMenu {
 		sys.getOrders().add(order);
 		sys.getShipments().add(shipment);
 
-		System.out.println("--- Checkout Summary ---\n--- Cart ---");
+		System.out.println("\n--- Checkout Summary ---\n--- Cart ---");
 		customer.shoppingcart.print();
 		if (!(activeD == null))
 			System.out.printf("%s : - %s %.2f\n", activeD.getDetails(), App.currency, discount);
 		else
 			System.out.println("No active Discounts");
-		System.out.printf("Shipping (%.2f kg): %s %.2f\n", totalWeight, App.currency, subtotal);
+		System.out.printf("Shipping (%.2f kg): %s %.2f\n", totalWeight, App.currency, shippingfee);
 		System.out.printf("TOTAL: %s %.2f\n", App.currency, total);
-		System.out.print(payment.summary());
-		System.out.printf("Order ID: %s\n", order.getId());
-		System.out.print(shipment.basicInfo());
+		System.out.printf("Payment: %s\n", payment.summary());
+		System.out.println(shipment.basicInfo());
 		customer.shoppingcart.clear();
 	}
 }

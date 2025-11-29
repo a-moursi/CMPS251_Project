@@ -32,7 +32,7 @@ public class CardPayment implements Payment {
 	@Override
 	public String summary() {
 		
-		return String.format("Card payment: %s (%s), amount: %.2f  %s",this.cardHolder,this.maskedNumber ,this.amount, this.currency);
+		return String.format("Card %s %.2f, (%s, %s)", this.currency, this.amount, this.cardHolder, this.maskedNumber);
 	}
 
 }

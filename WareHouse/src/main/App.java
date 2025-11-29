@@ -10,7 +10,6 @@ import Data.SeedData;
 
 //Name: Abdelrahman Moursi
 //ID: 202406103
-//Date: 01-11-2025
 
 public class App {
 	public static final LocalDate TODAY = LocalDate.of(2025, 10, 24);
