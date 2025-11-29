@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import main.App;
 
-public class ProductListView {
+public class ProductListView {//test
 	public static void printCategorized(ArrayList<Product> products) {// for now just prints all products
 //		products.sort(null);// add the lambda method to compare the products where electronics come first
 //							// then books then groceries
