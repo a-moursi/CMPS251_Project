@@ -111,12 +111,12 @@ public class StaffMenu {
 	private static void addProduct(Scanner sc, WarehouseSystem sys) {// DONE
 
 		// prints the menu and saves the needed data in variables
-		System.out.println("Category: 1) Book 2) Electronic 3) Grocery\n> ");
+		System.out.print("Category: 1) Book 2) Electronic 3) Grocery\n> ");
 		int choice = sc.nextInt();
 		System.out.print("ID: > ");
-		String id = sc.next();
+		String id = sc.nextLine();
 		System.out.print("Name: > ");
-		String name = sc.next();
+		String name = sc.nextLine();
 		System.out.printf("Price (%s): > ", App.currency);// shows the currency (remove if currency never changes)
 		double price = sc.nextDouble();
 		System.out.print("Weight (Kg): > ");
