@@ -1,8 +1,10 @@
 package PaymentSystem;
 
+import java.io.Serializable;
+
 // Anas Ali Khan, 17/11/2025
 
-public class CardPayment implements Payment {
+public class CardPayment implements Payment,Serializable {
 	private String currency;
 	private double amount;
 

@@ -1,7 +1,9 @@
 package PaymentSystem;
 //Anas Ali Khan, 17/11/2025
 
-public class CashPayment implements Payment {
+import java.io.Serializable;
+
+public class CashPayment implements Payment, Serializable {
 
 	private String currency; // QAR
 	private double amount;

@@ -1,11 +1,13 @@
 package Orders;
 
+import java.io.Serializable;
+
 import Products.Product;
 
 //Anas Ali Khan
 //11/05/2025
 
-public class OrderItem {
+public class OrderItem implements Serializable {
 	private int quantity;
 	private Product product;
 	private double unitPriceQar;
