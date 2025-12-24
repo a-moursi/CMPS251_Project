@@ -1,4 +1,4 @@
-# 🏬 Warehouse Management System (Console Application)
+# 🏬 Warehouse Management System 
 
 A menu-driven console application that simulates a complete online warehouse workflow — from inventory management and discounts to customer orders and shipment tracking.
 
